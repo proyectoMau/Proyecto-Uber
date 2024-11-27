@@ -4,6 +4,7 @@
  */
 package Interfaz;
 
+import static Interfaz.VtnClienteDashboard.y;
 import cjb.ci.Mensajes;
 import poo.Manipulacion;
 
@@ -93,7 +94,8 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         if (VtnPrincipal.v != null)
         {
-            jTextArea1.setText(Manipulacion.despVTodosC(VtnPrincipal.vC, VtnCliente.fC));
+            String SA=Manipulacion.despS(VtnPrincipal.s, y+1);
+            jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.vC, VtnCliente.fC, SA));
 
         } else
         {

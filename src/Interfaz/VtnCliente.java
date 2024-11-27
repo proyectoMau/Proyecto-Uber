@@ -163,6 +163,7 @@ public class VtnCliente extends javax.swing.JFrame
         if (nom == "nul")
         {
             Mensajes.exito(this, "usuario no encontrado");
+           
         } else
         {
             new VtnClienteDashboard().setVisible(true);

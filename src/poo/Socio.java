@@ -139,7 +139,7 @@ public class Socio implements Serializable
             y += 0;
         }
         y += numSocio;
-        return  "Numero socio: " + y + "\tNombre: " + nom + "\tPlacas: " + placas + "\tModelo: " + modelo + "\tFecha: " + fecha;
+        return  "\t Numero socio: " + y + "\t Nombre: " + nom + "\t Placas: " + placas + "\t Modelo: " + modelo + "\t Fecha: " + fecha + "\n";
     }
 
     

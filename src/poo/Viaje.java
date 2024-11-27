@@ -157,7 +157,7 @@ public class Viaje implements Serializable
         }
         y += folioCliente;
         return "\tFolio cliente: " + y + "\tOrigen: " + origen + "\tDestino: " + destino + 
-                "\tEtatus: " + status + "\tFecha: " + fecha + "\tMonto: " + monto + "\n";
+                "\tEtatus: " + status + "\tFecha: " + fecha + "\tMonto: " + monto ;
     }
 
 }

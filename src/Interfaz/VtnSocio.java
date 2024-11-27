@@ -4,12 +4,13 @@
  */
 package Interfaz;
 
-import static Interfaz.VtnCliente.fC;
-import static Interfaz.VtnCliente.nom;
+import static Interfaz.VtnPrincipal.s;
 import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
+import poo.ManipulaArchivos;
 import poo.Manipulacion;
+import poo.Socio;
 
 /**
  *
@@ -37,8 +38,7 @@ public class VtnSocio extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         BtnCancelar = new javax.swing.JToggleButton();
         BtnRegistrarSocio = new javax.swing.JToggleButton();
@@ -49,11 +49,12 @@ public class VtnSocio extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Login socios");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,41 +62,32 @@ public class VtnSocio extends javax.swing.JFrame
         BtnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
         BtnCancelar.setToolTipText("Cancelar");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCancelarActionPerformed(evt);
             }
         });
         getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         BtnRegistrarSocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/BtnRegistrarsocio.png"))); // NOI18N
-        BtnRegistrarSocio.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnRegistrarSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistrarSocioActionPerformed(evt);
             }
         });
         getContentPane().add(BtnRegistrarSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
 
         TxtNumSocio.setToolTipText("Número de socio");
-        TxtNumSocio.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        TxtNumSocio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TxtNumSocioActionPerformed(evt);
             }
         });
-        TxtNumSocio.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TxtNumSocio.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TxtNumSocioKeyPressed(evt);
             }
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
                 TxtNumSocioKeyTyped(evt);
             }
         });
@@ -104,17 +96,13 @@ public class VtnSocio extends javax.swing.JFrame
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
         btnAceptar.setEnabled(false);
-        btnAceptar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
-        btnAceptar.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnAceptar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnAceptarKeyPressed(evt);
             }
         });
@@ -184,6 +172,18 @@ public class VtnSocio extends javax.swing.JFrame
             btnAceptarActionPerformed(null);
         }
     }//GEN-LAST:event_btnAceptarKeyPressed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        s = (Socio[]) ManipulaArchivos.cargaAS("Socios.dat");
+        try
+        {
+            Socio.setCons((int) ManipulaArchivos.cargaS("foliosS.dat"));
+        } catch (Exception e)
+        {
+            Socio.setCons(0);
+        }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
