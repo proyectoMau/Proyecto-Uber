@@ -4,6 +4,8 @@
  */
 package Interfaz;
 
+import static Interfaz.VtnPrincipal.v;
+import static Interfaz.VtnPrincipal.vC;
 import cjb.ci.Mensajes;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
@@ -31,8 +33,7 @@ public class VtnSocioDashboard extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         btnModificaDatos = new javax.swing.JToggleButton();
         btnIniciarViaje = new javax.swing.JToggleButton();
@@ -46,80 +47,67 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Dashboard socios");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
+            }
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnModificaDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioModificaDatos.png"))); // NOI18N
-        btnModificaDatos.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnModificaDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificaDatosActionPerformed(evt);
             }
         });
         getContentPane().add(btnModificaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         btnIniciarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioIniciaViaje.png"))); // NOI18N
-        btnIniciarViaje.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnIniciarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIniciarViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnIniciarViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
         btnCancelaViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioCancelaViaje.png"))); // NOI18N
-        btnCancelaViaje.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnCancelaViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelaViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnCancelaViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
 
         btnTerminarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioTerminaViaje.png"))); // NOI18N
-        btnTerminarViaje.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnTerminarViaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTerminarViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnTerminarViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
 
         btnConsultaViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioConsultaViajes.png"))); // NOI18N
-        btnConsultaViajes.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnConsultaViajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaViajesActionPerformed(evt);
             }
         });
         getContentPane().add(btnConsultaViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         btnConsultaGanancias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/ClientesConsultaGastos.png"))); // NOI18N
-        btnConsultaGanancias.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnConsultaGanancias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaGananciasActionPerformed(evt);
             }
         });
         getContentPane().add(btnConsultaGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, -1, -1));
 
         BtnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Salir2.png"))); // NOI18N
-        BtnSalir.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnSalirActionPerformed(evt);
             }
         });
@@ -265,6 +253,12 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         new VtnPrincipal().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        v = (Viaje[][]) ManipulaArchivos.cargaAV("Viajes.dat");
+        vC = (Viaje[][]) ManipulaArchivos.cargaAVC("ViajesC.dat");
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
