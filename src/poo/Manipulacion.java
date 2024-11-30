@@ -1118,6 +1118,7 @@ public class Manipulacion
                 if (s[i].getNumSocio().equals(pos))
                 {
                     c += s[i].toString();
+                    return c;
 
                 }
 
@@ -1218,8 +1219,40 @@ public class Manipulacion
                     {
                         if (v[i][j].getFolioCliente().equals(pos))
                         {
-
+                            
                             s += v[i][j].toString() + "\n";
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        } else
+        {
+            s = "no hay datos";
+        }
+        return s;
+
+    }
+    public static String despVTodosCS(Viaje[][] v, String pos, String SA)
+    {
+        String s = "";
+        if (v != null)
+        {
+            for (int i = 0; i < v.length; i++)
+            {
+                if (v[i] != null)
+                {
+                    for (int j = 0; j < v[i].length; j++)
+                    {
+                        if (v[i][j].getFolioCliente().equals(pos))
+                        {
+                            
+                            
+                            s += v[i][j].toString() + "\n"+ SA +"\n";
 
                         }
 
