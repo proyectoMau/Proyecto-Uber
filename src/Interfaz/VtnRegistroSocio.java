@@ -159,12 +159,12 @@ public class VtnRegistroSocio extends javax.swing.JFrame
             txtFecha.requestFocus();
             return;
         }
-        VtnPrincipal.s = Manipulacion.insertaSocio(
-                VtnPrincipal.s,
-                new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFecha.getText())
-        );
-        Mensajes.exito(this, "Socio registrado correctamente" + Manipulacion.despS(VtnPrincipal.s, VtnPrincipal.s.length));
-        BtnCancelarActionPerformed(evt);
+        Socio nuevoSocio = new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFecha.getText());
+        VtnPrincipal.s = Manipulacion.insertaSocio(VtnPrincipal.s, nuevoSocio);
+        VtnPrincipal.tmpSocio = nuevoSocio;
+        socioRegistrado ventana = new socioRegistrado();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
