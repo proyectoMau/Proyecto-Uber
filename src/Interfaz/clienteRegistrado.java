@@ -5,20 +5,18 @@
 package Interfaz;
 
 import cjb.ci.Mensajes;
-import poo.Cliente;
-import poo.ManipulaArchivos;
 
 /**
  *
  * @author Meche}
  */
-public class socioRegistrado extends javax.swing.JFrame
+public class clienteRegistrado extends javax.swing.JFrame
 {
 
     /**
-     * Creates new form socioRegistrado
+     * Creates new form clienteRegistrado
      */
-    public socioRegistrado()
+    public clienteRegistrado()
     {
         initComponents();
     }
@@ -33,15 +31,14 @@ public class socioRegistrado extends javax.swing.JFrame
     private void initComponents()
     {
 
-        numSocio = new javax.swing.JTextField();
+        numCliente = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
-        placas = new javax.swing.JTextField();
-        modelo = new javax.swing.JTextField();
         fecha = new javax.swing.JTextField();
+        formaPago = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Socio registrado");
+        setTitle("Cliente registrado");
         addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowClosing(java.awt.event.WindowEvent evt)
@@ -55,22 +52,19 @@ public class socioRegistrado extends javax.swing.JFrame
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        numSocio.setEnabled(false);
-        getContentPane().add(numSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 270, -1));
+        numCliente.setEnabled(false);
+        getContentPane().add(numCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 250, -1));
 
         nombre.setEnabled(false);
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 270, -1));
-
-        placas.setEnabled(false);
-        getContentPane().add(placas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 270, -1));
-
-        modelo.setEnabled(false);
-        getContentPane().add(modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 270, -1));
+        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 250, -1));
 
         fecha.setEnabled(false);
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 270, -1));
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 250, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SociosRegistrado.png"))); // NOI18N
+        formaPago.setEnabled(false);
+        getContentPane().add(formaPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 250, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/clienteRegistrado.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -79,23 +73,33 @@ public class socioRegistrado extends javax.swing.JFrame
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        if (VtnPrincipal.tmpSocio != null)
+        if (VtnPrincipal.tmpCliente != null)
         {
-            numSocio.setText(String.valueOf(VtnPrincipal.tmpSocio.getNumSocio()));
-            nombre.setText(VtnPrincipal.tmpSocio.getNom());
-            placas.setText(VtnPrincipal.tmpSocio.getPlacas());
-            modelo.setText(VtnPrincipal.tmpSocio.getModelo());
-            fecha.setText(VtnPrincipal.tmpSocio.getFecha());
+            numCliente.setText(String.valueOf(VtnPrincipal.tmpCliente.getFolioCliente()));
+            nombre.setText(VtnPrincipal.tmpCliente.getNom());
+            fecha.setText(VtnPrincipal.tmpCliente.getFecha());
+            char formaPagoChar = VtnPrincipal.tmpCliente.getFormaPago();
+            String formaPagoTexto;
+            if (formaPagoChar == 'E')
+            {
+                formaPagoTexto = "Efectivo";
+            } else if (formaPagoChar == 'T')
+            {
+                formaPagoTexto = "Tarjeta";
+            } else
+            {
+                formaPagoTexto = "Desconocido";
+            }
+            formaPago.setText(formaPagoTexto);
         } else
         {
-            Mensajes.error(this, "No se encontraron datos del socio.");
+            Mensajes.error(this, "No se encontraron datos del cliente.");
         }
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        this.setVisible(false);
-        new VtnRegistroSocio().setVisible(true);
+        new VtnRegistroCliente().setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     /**
@@ -120,16 +124,16 @@ public class socioRegistrado extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(clienteRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -138,17 +142,16 @@ public class socioRegistrado extends javax.swing.JFrame
         {
             public void run()
             {
-                new socioRegistrado().setVisible(true);
+                new clienteRegistrado().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField fecha;
+    private javax.swing.JTextField formaPago;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField modelo;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField numSocio;
-    private javax.swing.JTextField placas;
+    private javax.swing.JTextField numCliente;
     // End of variables declaration//GEN-END:variables
 }

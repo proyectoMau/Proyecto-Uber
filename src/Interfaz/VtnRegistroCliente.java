@@ -153,12 +153,12 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
     {//GEN-HEADEREND:event_txtFechaKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha,formaPago);
+        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, formaPago);
     }//GEN-LAST:event_txtFechaKeyPressed
 
     private void formaPagoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_formaPagoActionPerformed
     {//GEN-HEADEREND:event_formaPagoActionPerformed
-        
+
     }//GEN-LAST:event_formaPagoActionPerformed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
@@ -173,14 +173,14 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
-        CtrlInterfaz.limpia(txtNombre,  txtFecha);
+        CtrlInterfaz.limpia(txtNombre, txtFecha);
         CtrlInterfaz.habilita(false, txtFecha);
         CtrlInterfaz.selecciona(txtNombre);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formaPagoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_formaPagoKeyPressed
     {//GEN-HEADEREND:event_formaPagoKeyPressed
-        
+
     }//GEN-LAST:event_formaPagoKeyPressed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
@@ -198,25 +198,51 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        if (txtFecha.getText().trim().isEmpty())
+
+        if (txtFecha.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty() || formaPago.getSelectedItem() == null)
         {
             Mensajes.error(this, "Ingrese todos los datos para poder registrar");
-            txtFecha.requestFocus();
+            if (txtNombre.getText().trim().isEmpty())
+            {
+                txtNombre.requestFocus();
+            } else if (formaPago.getSelectedItem() == null)
+            {
+                formaPago.requestFocus();
+            } else
+            {
+                txtFecha.requestFocus();
+            }
             return;
         }
         String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
-        char formaPagoChar = formaPagoSeleccionada.charAt(0);
-        VtnPrincipal.c=Manipulacion.insertaCliente(VtnPrincipal.c, 
-                new Cliente(txtNombre.getText(), formaPagoChar, txtFecha.getText()));
-        Mensajes.exito(this,"Cliente registrado correctamente \n"+Manipulacion.despC(VtnPrincipal.c, VtnPrincipal.c.length));
-        
-        btnCancelarActionPerformed(evt);
-        
+        char formaPagoChar;
+        if ("Efectivo".equalsIgnoreCase(formaPagoSeleccionada))
+        {
+            formaPagoChar = 'E';
+        } else if ("Tarjeta".equalsIgnoreCase(formaPagoSeleccionada))
+        {
+            formaPagoChar = 'T';
+        } else
+        {
+            Mensajes.error(this, "Forma de pago inválida.");
+            formaPago.requestFocus();
+            return;
+        }
+        Cliente nuevoCliente = new Cliente(
+                txtNombre.getText(),
+                formaPagoChar,
+                txtFecha.getText()
+        );
+        VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c, nuevoCliente);
+        VtnPrincipal.tmpCliente = nuevoCliente;
+        clienteRegistrado ventana = new clienteRegistrado();
+        ventana.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed
     {//GEN-HEADEREND:event_btnAceptarKeyPressed
-        if (evt.getKeyChar()== '\n')
+        if (evt.getKeyChar() == '\n')
         {
             btnAceptarActionPerformed(null);
         }
