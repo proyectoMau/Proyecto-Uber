@@ -132,10 +132,10 @@ public class VtnPrincipal extends javax.swing.JFrame
        c = (Cliente[]) ManipulaArchivos.cargaAC("Clientes.dat");
         try
         {
-            Socio.setCons((int) ManipulaArchivos.cargaC("foliosC.dat"));
+            Cliente.setCons((int) ManipulaArchivos.cargaC("foliosC.dat"));
         } catch (Exception e)
         {
-            Socio.setCons(0);
+            Cliente.setCons(0);
         }
        v = (Viaje[][]) ManipulaArchivos.cargaAV("Viajes.dat");
        vC = (Viaje[][]) ManipulaArchivos.cargaAVC("ViajesC.dat");

@@ -812,7 +812,7 @@ public class Manipulacion
             }
 
         }
-        return 1;
+        return -1;
     }
 
     public static int buscarStatusEspera3(Viaje[][] v, Socio[] s, String FolioCliente)
@@ -1097,9 +1097,28 @@ public class Manipulacion
     public static String despS(Socio[] s, int pos)
     {
         String c = "";
-        if (c != null)
+        if (s != null)
         {
             c += s[pos - 1].toString();
+        } else
+        {
+            c = "no hay datos";
+        }
+        return c;
+
+    }
+
+    public static String despSInt(Socio[] s, int pos)
+    {
+        String c = "";
+        if (s != null)
+        {
+            System.out.println(pos);
+            if (pos >= 0)
+            {
+                c += s[pos].toString();
+            }
+
         } else
         {
             c = "no hay datos";
@@ -1111,7 +1130,7 @@ public class Manipulacion
     public static String despS(Socio[] s, String pos)
     {
         String c = "";
-        if (c != null)
+        if (s != null)
         {
             for (int i = 0; i < s.length; i++)
             {
@@ -1219,7 +1238,7 @@ public class Manipulacion
                     {
                         if (v[i][j].getFolioCliente().equals(pos))
                         {
-                            
+
                             s += v[i][j].toString() + "\n";
 
                         }
@@ -1237,6 +1256,7 @@ public class Manipulacion
         return s;
 
     }
+
     public static String despVTodosCS(Viaje[][] v, String pos, String SA)
     {
         String s = "";
@@ -1250,9 +1270,8 @@ public class Manipulacion
                     {
                         if (v[i][j].getFolioCliente().equals(pos))
                         {
-                            
-                            
-                            s += v[i][j].toString() + "\n"+ SA +"\n";
+
+                            s += v[i][j].toString() + "\n" + SA + "\n";
 
                         }
 

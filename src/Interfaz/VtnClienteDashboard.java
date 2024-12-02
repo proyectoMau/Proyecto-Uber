@@ -222,7 +222,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
                 if (VtnPrincipal.tmpVC.getStatus() == 'E')
                 {
 
-                    y = Manipulacion.buscarStatusEspera(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
+                    y = Manipulacion.buscarStatusEspera2(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
                     VtnPrincipal.v = Manipulacion.elimina(VtnPrincipal.v, y, VtnCliente.fC);
 
                 }
