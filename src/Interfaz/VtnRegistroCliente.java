@@ -161,13 +161,9 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
     {//GEN-HEADEREND:event_txtFechaKeyPressed
-<<<<<<< HEAD
 
         Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
 
-=======
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, formaPago);
->>>>>>> 0f3e4f09009be259c0e21048a2cdfaeaf660db92
     }//GEN-LAST:event_txtFechaKeyPressed
 
     private void formaPagoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_formaPagoActionPerformed
@@ -188,13 +184,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
         CtrlInterfaz.limpia(txtNombre, txtFecha);
-<<<<<<< HEAD
-
         CtrlInterfaz.habilita(false, txtFecha, btnAceptar);
-
-=======
-        CtrlInterfaz.habilita(false, txtFecha);
->>>>>>> 0f3e4f09009be259c0e21048a2cdfaeaf660db92
         CtrlInterfaz.selecciona(txtNombre);
         formaPago.setSelectedIndex(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -235,7 +225,6 @@ public class VtnRegistroCliente extends javax.swing.JFrame
             }
             return;
         }
-<<<<<<< HEAD
         //String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
         char formaPagoChar = 0;
         if (formaPago.getSelectedItem().equals("-Selecciona-"))
@@ -319,32 +308,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 //        
 //        btnCancelarActionPerformed(evt);
         }
-=======
-        String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
-        char formaPagoChar;
-        if ("Efectivo".equalsIgnoreCase(formaPagoSeleccionada))
-        {
-            formaPagoChar = 'E';
-        } else if ("Tarjeta".equalsIgnoreCase(formaPagoSeleccionada))
-        {
-            formaPagoChar = 'T';
-        } else
-        {
-            Mensajes.error(this, "Forma de pago inválida.");
-            formaPago.requestFocus();
-            return;
-        }
-        Cliente nuevoCliente = new Cliente(
-                txtNombre.getText(),
-                formaPagoChar,
-                txtFecha.getText()
-        );
-        VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c, nuevoCliente);
-        VtnPrincipal.tmpCliente = nuevoCliente;
-        clienteRegistrado ventana = new clienteRegistrado();
-        ventana.setVisible(true);
-        this.setVisible(false);
->>>>>>> 0f3e4f09009be259c0e21048a2cdfaeaf660db92
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed

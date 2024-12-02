@@ -5,8 +5,8 @@
 package Interfaz;
 
 import cjb.ci.Mensajes;
-import poo.Cliente;
 import poo.ManipulaArchivos;
+import poo.Socio;
 
 /**
  *
@@ -94,18 +94,10 @@ public class socioRegistrado extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-<<<<<<< HEAD
 
-        /*ManipulaArchivos.guardaS(Cliente.getCons(), "foliosS.dat");
-        ManipulaArchivos.guardaCA(VtnPrincipal.c, "Socios.dat");*/
-        new VtnSocio().setVisible(true);
-        this.setVisible(false);
-        
-
-=======
-        this.setVisible(false);
+        ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
+        ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");
         new VtnRegistroSocio().setVisible(true);
->>>>>>> 0f3e4f09009be259c0e21048a2cdfaeaf660db92
     }//GEN-LAST:event_formWindowClosing
 
     /**

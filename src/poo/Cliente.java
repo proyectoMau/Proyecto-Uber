@@ -120,7 +120,7 @@ public class Cliente implements Serializable
             y+=0;
         }
         y+=folioCliente;
-        return "\nFolioCliente: " + y + "\tnombre: " + nom + "\tForma Pago: " + formaPago + "\tFecha: " + fecha ;
+        return "\n FolioCliente: " + y + "\t nombre: " + nom + "\t Forma Pago: " + formaPago + "\t Fecha: " + fecha ;
     }
 
    

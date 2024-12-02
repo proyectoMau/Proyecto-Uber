@@ -18,14 +18,16 @@ import poo.Viaje;
  *
  * @author Meche}
  */
-public class VtnSolicitarViaje extends javax.swing.JFrame {
-    
+public class VtnSolicitarViaje extends javax.swing.JFrame
+{
+
     public static char status = ' ';
 
     /**
      * Creates new form VtnSolicitarViaje
      */
-    public VtnSolicitarViaje() {
+    public VtnSolicitarViaje()
+    {
         initComponents();
     }
 
@@ -204,32 +206,39 @@ public class VtnSolicitarViaje extends javax.swing.JFrame {
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
         String textoStatus = "";
-        if (VtnPrincipal.s == null) {
+        if (VtnPrincipal.s == null)
+        {
             y = 0;
-        } else {
+        } else
+        {
             y = (int) (Math.random() * VtnPrincipal.s.length);
         }
+        System.out.println(y);
         status = buscarStatus(VtnPrincipal.v, VtnPrincipal.s, y);
         VtnPrincipal.tmpVC = new Viaje(VtnCliente.fC, txtOrigen.getText(), txtDestino.getText(),
                 status, txtFecha.getText(), monto = (int) (Math.random() * 200));
-        
-        if (VtnPrincipal.tmpVC.getStatus() == 'S') {
+
+        if (VtnPrincipal.tmpVC.getStatus() == 'S')
+        {
             VtnPrincipal.vC = Manipulacion.insertaViajeC(VtnPrincipal.c, VtnPrincipal.vC,
                     VtnPrincipal.tmpVC, Integer.parseInt(VtnCliente.fC));
-        } else {
+            
+        } else
+        {
             VtnPrincipal.vC = Manipulacion.insertaViajeC(VtnPrincipal.c, VtnPrincipal.vC, VtnPrincipal.tmpVC, Integer.parseInt(VtnCliente.fC));
             VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, y);
-            Mensajes.exito(this, "Su conductor es " + Manipulacion.despS(VtnPrincipal.s, (y+1)));
-            
+            Mensajes.exito(this, "Su conductor es " + Manipulacion.despS(VtnPrincipal.s, (y + 1)));
+
         }
-        vtnViajeCreado vtn = new vtnViajeCreado();        
+        vtnViajeCreado vtn = new vtnViajeCreado();
         vtn.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed
     {//GEN-HEADEREND:event_btnAceptarKeyPressed
-        if (evt.getKeyChar() == '\n') {
+        if (evt.getKeyChar() == '\n')
+        {
             btnAceptarActionPerformed(null);
         }
     }//GEN-LAST:event_btnAceptarKeyPressed
@@ -243,33 +252,43 @@ public class VtnSolicitarViaje extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])
+    {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex)
+        {
             java.util.logging.Logger.getLogger(VtnSolicitarViaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
+        } catch (InstantiationException ex)
+        {
             java.util.logging.Logger.getLogger(VtnSolicitarViaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
+        } catch (IllegalAccessException ex)
+        {
             java.util.logging.Logger.getLogger(VtnSolicitarViaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+        {
             java.util.logging.Logger.getLogger(VtnSolicitarViaje.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(new Runnable()
+        {
+            public void run()
+            {
                 new VtnSolicitarViaje().setVisible(true);
             }
         });
