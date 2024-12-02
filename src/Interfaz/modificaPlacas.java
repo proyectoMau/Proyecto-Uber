@@ -29,21 +29,48 @@ public class modificaPlacas extends javax.swing.JFrame
     private void initComponents()
     {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        numSocio = new javax.swing.JTextField();
+        nom = new javax.swing.JTextField();
+        placas = new javax.swing.JTextField();
+        modelo = new javax.swing.JTextField();
+        fecha = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
+                formWindowOpened(evt);
+            }
+        });
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        numSocio.setEnabled(false);
+        getContentPane().add(numSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 250, -1));
+
+        nom.setEnabled(false);
+        getContentPane().add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 250, -1));
+
+        placas.setEnabled(false);
+        getContentPane().add(placas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 250, -1));
+
+        modelo.setEnabled(false);
+        getContentPane().add(modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 250, -1));
+
+        fecha.setEnabled(false);
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 250, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/modifica-placas.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
+    {//GEN-HEADEREND:event_formWindowOpened
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -91,5 +118,11 @@ public class modificaPlacas extends javax.swing.JFrame
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fecha;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField modelo;
+    private javax.swing.JTextField nom;
+    private javax.swing.JTextField numSocio;
+    private javax.swing.JTextField placas;
     // End of variables declaration//GEN-END:variables
 }

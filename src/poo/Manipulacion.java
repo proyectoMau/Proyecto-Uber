@@ -238,9 +238,6 @@ public class Manipulacion
                 }
             }
         }
-
-        {
-        }
         return s;
     }
 
