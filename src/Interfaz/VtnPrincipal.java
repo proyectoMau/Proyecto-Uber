@@ -64,6 +64,7 @@ public class VtnPrincipal extends javax.swing.JFrame
 
         jToggleButtonSocio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/iconoConductor.png"))); // NOI18N
         jToggleButtonSocio.setToolTipText("Socio");
+        jToggleButtonSocio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButtonSocio.setHorizontalAlignment(javax.swing.SwingConstants.LEADING);
         jToggleButtonSocio.addActionListener(new java.awt.event.ActionListener()
         {
@@ -76,6 +77,7 @@ public class VtnPrincipal extends javax.swing.JFrame
 
         jToggleButtoncliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/iconoPasaj.png"))); // NOI18N
         jToggleButtoncliente.setToolTipText("Cliente");
+        jToggleButtoncliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButtoncliente.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -87,6 +89,7 @@ public class VtnPrincipal extends javax.swing.JFrame
 
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Salir2.png"))); // NOI18N
         jToggleButton1.setToolTipText("Salir");
+        jToggleButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jToggleButton1.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -143,6 +146,17 @@ public class VtnPrincipal extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
+        /*ManipulaArchivos.guardaCA(c, "cliente.dat");
+        ManipulaArchivos.guarda(s, "socio.dat");
+        ManipulaArchivos.guarda(v, "viajes.dat");
+        ManipulaArchivos.guarda(Cliente.getCons(), "numCliente.dat");
+        ManipulaArchivos.guarda(Socio.getCons(), "folios.dat");
+        
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.vC, "ViajesC.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");*/
+        
         System.exit(0);
     }//GEN-LAST:event_formWindowClosing
 

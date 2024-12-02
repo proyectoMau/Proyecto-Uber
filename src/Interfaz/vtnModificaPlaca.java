@@ -67,6 +67,8 @@ public class vtnModificaPlaca extends javax.swing.JFrame
 
         btnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
+        btnCancelar.setToolTipText("Limpiar campo");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -78,6 +80,8 @@ public class vtnModificaPlaca extends javax.swing.JFrame
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.setToolTipText("Actualizar placa");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.setEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener()
         {

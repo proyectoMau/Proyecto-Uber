@@ -37,6 +37,7 @@ public class vtnSocioConsultaGanancias extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Consulta de ganancias del socio");
         addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowClosing(java.awt.event.WindowEvent evt)
@@ -58,6 +59,8 @@ public class vtnSocioConsultaGanancias extends javax.swing.JFrame
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 380, 90));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/regresar.png"))); // NOI18N
+        btnRegresar.setToolTipText("");
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -83,7 +86,7 @@ public class vtnSocioConsultaGanancias extends javax.swing.JFrame
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRegresarActionPerformed
     {//GEN-HEADEREND:event_btnRegresarActionPerformed
         new VtnSocioDashboard().setVisible(true);
-        setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened

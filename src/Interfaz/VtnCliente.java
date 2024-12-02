@@ -56,6 +56,7 @@ public class VtnCliente extends javax.swing.JFrame
 
         BtnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
+        BtnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnCancelar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -66,6 +67,7 @@ public class VtnCliente extends javax.swing.JFrame
         getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 390, -1, -1));
 
         BtnRegistrarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/BtnRegitrarCliente.png"))); // NOI18N
+        BtnRegistrarCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnRegistrarCliente.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -97,6 +99,7 @@ public class VtnCliente extends javax.swing.JFrame
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.setEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener()
         {
