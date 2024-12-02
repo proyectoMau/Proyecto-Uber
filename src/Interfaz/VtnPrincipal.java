@@ -20,8 +20,8 @@ public class VtnPrincipal extends javax.swing.JFrame
     public static Viaje v[][]=null;
     public static Viaje vC[][]=null;
     public static Viaje tmpVC=null;
-    
     public static Socio tmpSocio;
+    public static Cliente tmpCliente;
 
     /**
      * Creates new form VtnPrincipal

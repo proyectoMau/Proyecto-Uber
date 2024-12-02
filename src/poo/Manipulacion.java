@@ -238,9 +238,6 @@ public class Manipulacion
                 }
             }
         }
-
-        {
-        }
         return s;
     }
 
@@ -1094,7 +1091,7 @@ public class Manipulacion
 
     }
 
-    public static String despS(Socio[] s, int pos)
+    public static String despS(Socio[] s, int pos)//V[][],c[]
     {
         String c = "";
         if (c != null)

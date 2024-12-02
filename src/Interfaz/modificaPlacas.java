@@ -4,21 +4,17 @@
  */
 package Interfaz;
 
-import cjb.ci.Mensajes;
-import poo.Cliente;
-import poo.ManipulaArchivos;
-
 /**
  *
  * @author Meche}
  */
-public class socioRegistrado extends javax.swing.JFrame
+public class modificaPlacas extends javax.swing.JFrame
 {
 
     /**
-     * Creates new form socioRegistrado
+     * Creates new form modificaPlacas
      */
-    public socioRegistrado()
+    public modificaPlacas()
     {
         initComponents();
     }
@@ -34,20 +30,15 @@ public class socioRegistrado extends javax.swing.JFrame
     {
 
         numSocio = new javax.swing.JTextField();
-        nombre = new javax.swing.JTextField();
+        nom = new javax.swing.JTextField();
         placas = new javax.swing.JTextField();
         modelo = new javax.swing.JTextField();
         fecha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Socio registrado");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
-            public void windowClosing(java.awt.event.WindowEvent evt)
-            {
-                formWindowClosing(evt);
-            }
             public void windowOpened(java.awt.event.WindowEvent evt)
             {
                 formWindowOpened(evt);
@@ -56,47 +47,30 @@ public class socioRegistrado extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         numSocio.setEnabled(false);
-        getContentPane().add(numSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 270, -1));
+        getContentPane().add(numSocio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 250, -1));
 
-        nombre.setEnabled(false);
-        getContentPane().add(nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 270, -1));
+        nom.setEnabled(false);
+        getContentPane().add(nom, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 250, -1));
 
         placas.setEnabled(false);
-        getContentPane().add(placas, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 270, -1));
+        getContentPane().add(placas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 250, -1));
 
         modelo.setEnabled(false);
-        getContentPane().add(modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 270, -1));
+        getContentPane().add(modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 250, -1));
 
         fecha.setEnabled(false);
-        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, 270, -1));
+        getContentPane().add(fecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 250, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SociosRegistrado.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/modifica-placas.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        if (VtnPrincipal.tmpSocio != null)
-        {
-            numSocio.setText(String.valueOf(VtnPrincipal.tmpSocio.getNumSocio()));
-            nombre.setText(VtnPrincipal.tmpSocio.getNom());
-            placas.setText(VtnPrincipal.tmpSocio.getPlacas());
-            modelo.setText(VtnPrincipal.tmpSocio.getModelo());
-            fecha.setText(VtnPrincipal.tmpSocio.getFecha());
-        } else
-        {
-            Mensajes.error(this, "No se encontraron datos del socio.");
-        }
+        // TODO add your handling code here:
     }//GEN-LAST:event_formWindowOpened
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
-    {//GEN-HEADEREND:event_formWindowClosing
-        this.setVisible(false);
-        new VtnRegistroSocio().setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -120,16 +94,16 @@ public class socioRegistrado extends javax.swing.JFrame
             }
         } catch (ClassNotFoundException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificaPlacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificaPlacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificaPlacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex)
         {
-            java.util.logging.Logger.getLogger(socioRegistrado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(modificaPlacas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -138,7 +112,7 @@ public class socioRegistrado extends javax.swing.JFrame
         {
             public void run()
             {
-                new socioRegistrado().setVisible(true);
+                new modificaPlacas().setVisible(true);
             }
         });
     }
@@ -147,7 +121,7 @@ public class socioRegistrado extends javax.swing.JFrame
     private javax.swing.JTextField fecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField modelo;
-    private javax.swing.JTextField nombre;
+    private javax.swing.JTextField nom;
     private javax.swing.JTextField numSocio;
     private javax.swing.JTextField placas;
     // End of variables declaration//GEN-END:variables

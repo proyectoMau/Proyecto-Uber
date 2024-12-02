@@ -9,6 +9,7 @@ import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
 import poo.Lecturas;
 import poo.Manipulacion;
+import poo.Socio;
 
 /**
  *
@@ -120,9 +121,13 @@ public class vtnModificaModelo extends javax.swing.JFrame
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        VtnPrincipal.s = Manipulacion.modificaModelo(VtnSocio.pos, VtnPrincipal.s, txtNuevoModelo.getText());
-        Mensajes.exito(this, Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
-        new VtnSocioDashboard().setVisible(true);
+        VtnPrincipal.s = Manipulacion.modificaModelo(VtnSocio.pos, VtnPrincipal.s,
+                txtNuevoModelo.getText());
+        VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos];
+        Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n"
+                + Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
+        modificaModelo ventana = new modificaModelo();
+        ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
