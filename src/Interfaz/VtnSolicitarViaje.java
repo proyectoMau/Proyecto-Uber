@@ -230,6 +230,8 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
             Mensajes.exito(this, "Su conductor es " + Manipulacion.despS(VtnPrincipal.s, (y + 1)));
 
         }
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
         vtnViajeCreado vtn = new vtnViajeCreado();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -247,6 +249,8 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowClosing
 //        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
 //        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
+        new VtnClienteDashboard().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_formWindowClosing
 
     /**

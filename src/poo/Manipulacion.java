@@ -596,9 +596,11 @@ public class Manipulacion
         {
             if (v == null)
             {
+                System.out.println(obj+"objeto insertado");
                 v = new Viaje[s.length][];
                 v[x] = new Viaje[1];
                 v[x][0] = obj;
+                System.out.println(x+"pos en socio");
 
             } else
             {
@@ -715,7 +717,7 @@ public class Manipulacion
 
     public static int buscarStatusE(Viaje[][] v, Socio[] s, String FolioCliente)
     {
-        if (s == null || v == null)
+        if (v == null)
         {
             return -1;
         } else
@@ -748,7 +750,7 @@ public class Manipulacion
 
     public static int buscarStatusEspera(Viaje[][] v, Socio[] s, String FolioCliente)
     {
-        if (s == null || v == null)
+        if (v == null)
         {
             return 1;
         } else
@@ -848,7 +850,7 @@ public class Manipulacion
     public static Viaje[][] cancelarViaje(Socio[] s, Viaje[][] v, int x)
     {
         int y = 0;
-        if (v == null || s == null || x < 0 || x > v.length)
+        if (v == null || x < 0 || x > v.length)
         {
             System.out.println("Viaje no encontrado");
         } else

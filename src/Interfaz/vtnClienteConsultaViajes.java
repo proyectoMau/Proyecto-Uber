@@ -93,9 +93,9 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        if (VtnPrincipal.v != null)
+        if (VtnPrincipal.vC != null)
         {
-            y = Manipulacion.buscarStatusEspera2(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
+            y = Manipulacion.buscarStatusEspera2(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC);
             System.out.println(y);
             String SA=Manipulacion.despSInt(VtnPrincipal.s, y);
             jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.vC, VtnCliente.fC, SA));

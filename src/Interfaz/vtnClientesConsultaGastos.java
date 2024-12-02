@@ -94,7 +94,7 @@ public class vtnClientesConsultaGastos extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         if (VtnPrincipal.v != null)
         {
-            jTextArea1.setText(Manipulacion.consultaGastos(VtnPrincipal.v, VtnCliente.fC));
+            jTextArea1.setText(Manipulacion.consultaGastos(VtnPrincipal.vC, VtnCliente.fC));
 
         } else
         {

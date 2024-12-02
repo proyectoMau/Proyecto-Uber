@@ -108,8 +108,6 @@ public class vtnViajeCreado extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
-        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
         VtnClienteDashboard vtn = new VtnClienteDashboard(); 
         vtn.setVisible(true);
         this.setVisible(false);

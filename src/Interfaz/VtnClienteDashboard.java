@@ -4,8 +4,7 @@
  */
 package Interfaz;
 
-import static Interfaz.VtnPrincipal.v;
-import static Interfaz.VtnPrincipal.vC;
+
 import cjb.ci.Mensajes;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
@@ -141,7 +140,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
     {//GEN-HEADEREND:event_btnSalirActionPerformed
         ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
         ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
-        
+
         VtnPrincipal vtn = new VtnPrincipal();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -163,42 +162,40 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
     private void btnCancelaViajeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelaViajeActionPerformed
     {//GEN-HEADEREND:event_btnCancelaViajeActionPerformed
-        if (VtnPrincipal.v != null)
+        if (VtnPrincipal.vC != null)
         {
-            if (VtnPrincipal.vC != null)
+
+            VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
+            if (VtnPrincipal.tmpVC.getStatus() == 'E')
             {
-                VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
-                if (VtnPrincipal.tmpVC.getStatus() == 'E')
+                if (VtnPrincipal.v != null)
                 {
                     VtnPrincipal.v = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC,
                             Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
                     vtnViajeCancelado vtn = new vtnViajeCancelado();
                     vtn.setVisible(true);
                     this.setVisible(false);
-
-                } else
-                {
-                    VtnPrincipal.vC = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC,
-                            Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
-                    vtnViajeCancelado vtn = new vtnViajeCancelado();
-                    vtn.setVisible(true);
-                    this.setVisible(false);
                 }
-
+            } else
+            {
+                VtnPrincipal.vC = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC, Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
+                vtnViajeCancelado vtn = new vtnViajeCancelado();
+                vtn.setVisible(true);
+                this.setVisible(false);
             }
 
         } else
         {
             Mensajes.error(this, "No hay viajes por cancelar");
         }
-        
+
 
     }//GEN-LAST:event_btnCancelaViajeActionPerformed
 
     private void btnSolicitaViajeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSolicitaViajeActionPerformed
     {//GEN-HEADEREND:event_btnSolicitaViajeActionPerformed
         int statusX = 0;
-        if (VtnPrincipal.v != null)
+        if (VtnPrincipal.vC != null)
         {
             statusX = Manipulacion.buscarStatusEspera(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC);
         } else
@@ -225,9 +222,11 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         if (VtnPrincipal.vC != null)
         {
             VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
+            System.out.println(VtnPrincipal.tmpVC);
             if (VtnPrincipal.tmpVC != null)
             {
-                pos2 = Manipulacion.buscarSocioDisponible(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
+                pos2 = (int) (Math.random() * VtnPrincipal.s.length) ;
+                System.out.println(pos2+" socio disponible");
                 if (VtnPrincipal.tmpVC.getStatus() == 'E')
                 {
 
@@ -240,7 +239,9 @@ public class VtnClienteDashboard extends javax.swing.JFrame
                 {
                     Mensajes.exito(this, "Reasignando");
                     VtnPrincipal.tmpVC.setStatus('E');
-                    VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);
+                    VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);//no funciona jaja
+                    System.out.println(Manipulacion.despV(VtnPrincipal.v, String.valueOf(pos2)+"Objeto en v"));
+                    
 
                 } else
                 {
@@ -266,8 +267,8 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        v = (Viaje[][]) ManipulaArchivos.cargaAV("Viajes.dat");
-        vC = (Viaje[][]) ManipulaArchivos.cargaAVC("ViajesC.dat");
+        VtnPrincipal.v = (Viaje[][]) ManipulaArchivos.cargaAV("Viajes.dat");
+        VtnPrincipal.vC = (Viaje[][]) ManipulaArchivos.cargaAVC("ViajesC.dat");
         ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
         ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
     }//GEN-LAST:event_formWindowOpened
