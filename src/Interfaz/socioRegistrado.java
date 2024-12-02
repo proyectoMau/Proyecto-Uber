@@ -94,6 +94,7 @@ public class socioRegistrado extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
+<<<<<<< HEAD
 
         /*ManipulaArchivos.guardaS(Cliente.getCons(), "foliosS.dat");
         ManipulaArchivos.guardaCA(VtnPrincipal.c, "Socios.dat");*/
@@ -101,6 +102,10 @@ public class socioRegistrado extends javax.swing.JFrame
         this.setVisible(false);
         
 
+=======
+        this.setVisible(false);
+        new VtnRegistroSocio().setVisible(true);
+>>>>>>> 0f3e4f09009be259c0e21048a2cdfaeaf660db92
     }//GEN-LAST:event_formWindowClosing
 
     /**
