@@ -3,17 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/Interfaz/vtnClienteConsultaViajes.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/poo/Manipulacion.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/poo/Socio.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/Interfaz/VtnSocio.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/Interfaz/VtnRegistroSocio.java</file>
-=======
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/poo/Examen.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/poo/Manipulacion.java</file>
-            <file>file:/C:/Users/aange/OneDrive/Documentos/POO/Proyecto-Uber/src/poo/Socio.java</file>
->>>>>>> angel
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/Interfaz/VtnClienteDashboard.java</file>
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/poo/ManipulaArchivos.java</file>
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/Interfaz/VtnSocio.java</file>
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/Interfaz/vtnClienteConsultaViajes.java</file>
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/Interfaz/VtnSocioDashboard.java</file>
+            <file>file:/C:/Users/ema15/OneDrive/Documentos/POO/pruebas%20git/Proyecto-Uber/src/Interfaz/VtnPrincipal.java</file>
         </group>
     </open-files>
 </project-private>

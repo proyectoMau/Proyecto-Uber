@@ -60,6 +60,7 @@ public class vtnSocioConsultaViajes extends javax.swing.JFrame
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 1060, 330));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/regresar.png"))); // NOI18N
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)

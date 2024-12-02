@@ -94,6 +94,8 @@ public class VtnSolicitarViaje extends javax.swing.JFrame {
 
         btnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
+        btnCancelar.setToolTipText("Limpiar campos");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -119,6 +121,8 @@ public class VtnSolicitarViaje extends javax.swing.JFrame {
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.setToolTipText("Solicitar viaje");
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAceptar.setEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener()
         {
@@ -134,7 +138,7 @@ public class VtnSolicitarViaje extends javax.swing.JFrame {
                 btnAceptarKeyPressed(evt);
             }
         });
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 470, -1, -1));
+        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SolicitarViaje.png"))); // NOI18N
         jLabel1.addKeyListener(new java.awt.event.KeyAdapter()

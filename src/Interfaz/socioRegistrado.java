@@ -5,6 +5,8 @@
 package Interfaz;
 
 import cjb.ci.Mensajes;
+import poo.Cliente;
+import poo.ManipulaArchivos;
 
 /**
  *
@@ -42,6 +44,10 @@ public class socioRegistrado extends javax.swing.JFrame
         setTitle("Socio registrado");
         addWindowListener(new java.awt.event.WindowAdapter()
         {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt)
             {
                 formWindowOpened(evt);
@@ -83,6 +89,15 @@ public class socioRegistrado extends javax.swing.JFrame
         Mensajes.error(this, "No se encontraron datos del socio.");
     }
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        /*ManipulaArchivos.guardaS(Cliente.getCons(), "foliosS.dat");
+        ManipulaArchivos.guardaCA(VtnPrincipal.c, "Socios.dat");*/
+        new VtnSocio().setVisible(true);
+        this.setVisible(false);
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

@@ -9,6 +9,7 @@ import cjb.ci.BtnEntero;
 import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
+import javax.swing.JOptionPane;
 import poo.Cliente;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
@@ -59,6 +60,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        txtNombre.setToolTipText("Nombre del cliente");
         txtNombre.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -79,6 +81,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 260, -1));
 
+        txtFecha.setToolTipText("Fecha de registro");
         txtFecha.setEnabled(false);
         txtFecha.addKeyListener(new java.awt.event.KeyAdapter()
         {
@@ -93,7 +96,9 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         });
         getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 260, -1));
 
-        formaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta", "Efectivo" }));
+        formaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Selecciona-", "Tarjeta", "Efectivo" }));
+        formaPago.setToolTipText("Forma de pago");
+        formaPago.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         formaPago.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -112,6 +117,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
         btnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -123,6 +129,8 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAceptar.setEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -153,7 +161,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
     {//GEN-HEADEREND:event_txtFechaKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha,formaPago);
+        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
     }//GEN-LAST:event_txtFechaKeyPressed
 
     private void formaPagoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_formaPagoActionPerformed
@@ -173,14 +181,15 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
-        CtrlInterfaz.limpia(txtNombre,  txtFecha);
-        CtrlInterfaz.habilita(false, txtFecha);
+        CtrlInterfaz.limpia(txtNombre, txtFecha);
+        CtrlInterfaz.habilita(false, txtFecha, btnAceptar);
         CtrlInterfaz.selecciona(txtNombre);
+        formaPago.setSelectedIndex(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void formaPagoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_formaPagoKeyPressed
     {//GEN-HEADEREND:event_formaPagoKeyPressed
-        
+       
     }//GEN-LAST:event_formaPagoKeyPressed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
@@ -198,25 +207,55 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
+        char formaPagoChar = 0;
         if (txtFecha.getText().trim().isEmpty())
         {
             Mensajes.error(this, "Ingrese todos los datos para poder registrar");
             txtFecha.requestFocus();
             return;
         }
-        String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
-        char formaPagoChar = formaPagoSeleccionada.charAt(0);
-        VtnPrincipal.c=Manipulacion.insertaCliente(VtnPrincipal.c, 
-                new Cliente(txtNombre.getText(), formaPagoChar, txtFecha.getText()));
-        Mensajes.exito(this,"Cliente registrado correctamente \n"+Manipulacion.despC(VtnPrincipal.c, VtnPrincipal.c.length));
-        
-        btnCancelarActionPerformed(evt);
-        
+        if (formaPago.getSelectedItem().equals("-Selecciona-"))
+        {
+            JOptionPane.showMessageDialog(this, "Debes seleccionar un metodo de pago");
+        } else
+        {
+            if (formaPago.getSelectedItem() == "Efectivo")
+            {
+                formaPagoChar = 'E';
+            }
+            if (formaPago.getSelectedItem() == "Tarjeta")
+            {
+                formaPagoChar = 'T';
+            }
+            VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c,
+                    new Cliente(txtNombre.getText(),
+                            formaPagoChar,
+                            txtFecha.getText()));
+
+            Mensajes.exito(this, "Cliente registrado correctamente \n" + Manipulacion.despC(VtnPrincipal.c, VtnPrincipal.c.length));
+
+            btnCancelarActionPerformed(evt);
+        }
+
+//        if (txtFecha.getText().trim().isEmpty())
+//        {
+//            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
+//            txtFecha.requestFocus();
+//            return;
+//        }
+//        String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
+//        char formaPagoChar = formaPagoSeleccionada.charAt(0);
+//        VtnPrincipal.c=Manipulacion.insertaCliente(VtnPrincipal.c, 
+//                new Cliente(txtNombre.getText(), formaPagoChar, txtFecha.getText()));
+//        Mensajes.exito(this,"Cliente registrado correctamente \n"+Manipulacion.despC(VtnPrincipal.c, VtnPrincipal.c.length));
+//        
+//        btnCancelarActionPerformed(evt);
+
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed
     {//GEN-HEADEREND:event_btnAceptarKeyPressed
-        if (evt.getKeyChar()== '\n')
+        if (evt.getKeyChar() == '\n')
         {
             btnAceptarActionPerformed(null);
         }

@@ -33,7 +33,8 @@ public class VtnSocioDashboard extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         btnModificaDatos = new javax.swing.JToggleButton();
         btnIniciarViaje = new javax.swing.JToggleButton();
@@ -47,67 +48,91 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Dashboard socios");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
                 formWindowClosing(evt);
             }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
+            public void windowOpened(java.awt.event.WindowEvent evt)
+            {
                 formWindowOpened(evt);
             }
         });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnModificaDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioModificaDatos.png"))); // NOI18N
-        btnModificaDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnModificaDatos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnModificaDatos.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnModificaDatosActionPerformed(evt);
             }
         });
         getContentPane().add(btnModificaDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         btnIniciarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioIniciaViaje.png"))); // NOI18N
-        btnIniciarViaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnIniciarViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIniciarViaje.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnIniciarViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnIniciarViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
         btnCancelaViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioCancelaViaje.png"))); // NOI18N
-        btnCancelaViaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnCancelaViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelaViaje.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnCancelaViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnCancelaViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
 
         btnTerminarViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioTerminaViaje.png"))); // NOI18N
-        btnTerminarViaje.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnTerminarViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnTerminarViaje.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnTerminarViajeActionPerformed(evt);
             }
         });
         getContentPane().add(btnTerminarViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
 
         btnConsultaViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SocioConsultaViajes.png"))); // NOI18N
-        btnConsultaViajes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnConsultaViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultaViajes.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnConsultaViajesActionPerformed(evt);
             }
         });
         getContentPane().add(btnConsultaViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, -1, -1));
 
         btnConsultaGanancias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/ClientesConsultaGastos.png"))); // NOI18N
-        btnConsultaGanancias.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnConsultaGanancias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnConsultaGanancias.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnConsultaGananciasActionPerformed(evt);
             }
         });
         getContentPane().add(btnConsultaGanancias, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, -1, -1));
 
         BtnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Salir2.png"))); // NOI18N
-        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnSalir.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtnSalirActionPerformed(evt);
             }
         });
@@ -143,6 +168,8 @@ public class VtnSocioDashboard extends javax.swing.JFrame
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnSalirActionPerformed
     {//GEN-HEADEREND:event_BtnSalirActionPerformed
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.vC, "ViajesC.dat");
         VtnPrincipal vtn = new VtnPrincipal();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -153,12 +180,12 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         int y = 0;
         if (VtnPrincipal.v == null || VtnPrincipal.s == null || VtnSocio.pos < 0 || VtnSocio.pos > VtnPrincipal.v.length)
         {
-            Mensajes.error(this, "Viaje no encontrado");
+            Mensajes.error(this, "No hay viajes por Iniciar");
         } else
         {
             if (VtnPrincipal.v[VtnSocio.pos - 1] == null)
             {
-                Mensajes.error(this, "No tienes viajes asignados aun");
+                Mensajes.error(this, "No hay viajes por Iniciar");
             } else
             {
                 for (int j = 0; j < VtnPrincipal.v[VtnSocio.pos - 1].length; j++)
@@ -185,13 +212,13 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         int y = 0;
         if (VtnPrincipal.v == null || VtnPrincipal.s == null || VtnSocio.pos < 0 || VtnSocio.pos > VtnPrincipal.v.length)
         {
-            Mensajes.error(this, "Viaje no encontrado");
+            Mensajes.error(this, "No hay viajes por cancelar");
 
         } else
         {
             if (VtnPrincipal.v[VtnSocio.pos - 1] == null)
             {
-                Mensajes.exito(this, "Viaje no encontrado");
+                Mensajes.exito(this, "No hay viajes por cancelar");
             } else
             {
 
@@ -218,12 +245,12 @@ public class VtnSocioDashboard extends javax.swing.JFrame
         int y = 0;
         if (VtnPrincipal.v == null || VtnPrincipal.s == null || VtnSocio.pos < 0 || VtnSocio.pos > VtnPrincipal.v.length)
         {
-            Mensajes.error(this, "Viaje no encontrado");
+            Mensajes.error(this, "No hay viajes por terminar");
         } else
         {
             if (VtnPrincipal.v[VtnSocio.pos - 1] == null)
             {
-                Mensajes.error(this, "Viaje no encontrado");
+                Mensajes.error(this, "No hay viajes por terminar");
             } else
             {
                 for (int j = 0; j < VtnPrincipal.v[VtnSocio.pos - 1].length; j++)
@@ -240,7 +267,7 @@ public class VtnSocioDashboard extends javax.swing.JFrame
                 }
                 if (y == 0)
                 {
-                    Mensajes.exito(this, "no hay Viaje por Iniciar ");
+                    Mensajes.exito(this, "no hay Viaje por terminar");
                 }
             }
         }

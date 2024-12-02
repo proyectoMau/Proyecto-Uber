@@ -62,6 +62,7 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 1020, 380));
 
         btnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/regresarCli.png"))); // NOI18N
+        btnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegresar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)

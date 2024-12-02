@@ -65,6 +65,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnSolicitaViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/iconoClienteSolicitaViaje.png"))); // NOI18N
+        btnSolicitaViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSolicitaViaje.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -75,6 +76,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().add(btnSolicitaViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
 
         btnCancelaViaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/ClienteCancelaViaje.png"))); // NOI18N
+        btnCancelaViaje.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelaViaje.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -85,6 +87,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().add(btnCancelaViaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, -1, -1));
 
         btnConsultaViajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/CllienteConsultaViajes.png"))); // NOI18N
+        btnConsultaViajes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultaViajes.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -95,6 +98,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().add(btnConsultaViajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 240, -1, -1));
 
         btnConsultaGastos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/ClientesConsultaGastos.png"))); // NOI18N
+        btnConsultaGastos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnConsultaGastos.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -105,6 +109,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().add(btnConsultaGastos, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, -1, -1));
 
         btnReasignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/ClientesReasignar.png"))); // NOI18N
+        btnReasignar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReasignar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -115,6 +120,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         getContentPane().add(btnReasignar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, -1, -1));
 
         btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Salir.png"))); // NOI18N
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSalir.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -133,6 +139,9 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSalirActionPerformed
     {//GEN-HEADEREND:event_btnSalirActionPerformed
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
+        
         VtnPrincipal vtn = new VtnPrincipal();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -180,7 +189,7 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
         } else
         {
-            Mensajes.error(this, "Aun no se registran viajes viajes");
+            Mensajes.error(this, "No hay viajes por cancelar");
         }
         
 

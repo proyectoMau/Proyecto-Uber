@@ -40,12 +40,13 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         txtPlacas = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
         txtFecha = new javax.swing.JTextField();
-        btnAceptar = new javax.swing.JToggleButton();
+        btnAceptar = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JToggleButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registro de socios");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
@@ -102,6 +103,13 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         getContentPane().add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 230, -1));
 
         txtFecha.setEnabled(false);
+        txtFecha.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtFechaActionPerformed(evt);
+            }
+        });
         txtFecha.addKeyListener(new java.awt.event.KeyAdapter()
         {
             public void keyPressed(java.awt.event.KeyEvent evt)
@@ -117,6 +125,7 @@ public class VtnRegistroSocio extends javax.swing.JFrame
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
+        btnAceptar.setEnabled(false);
         btnAceptar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -131,10 +140,11 @@ public class VtnRegistroSocio extends javax.swing.JFrame
                 btnAceptarKeyPressed(evt);
             }
         });
-        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 500, -1, -1));
+        getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, -1, -1));
 
         BtnCancelar.setBackground(new java.awt.Color(255, 115, 115));
         BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Cancelar.png"))); // NOI18N
+        BtnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         BtnCancelar.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -150,22 +160,6 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
-    {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        if (txtFecha.getText().trim().isEmpty())
-        {
-            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
-            txtFecha.requestFocus();
-            return;
-        }
-        Socio nuevoSocio = new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFecha.getText());
-        VtnPrincipal.s = Manipulacion.insertaSocio(VtnPrincipal.s, nuevoSocio);
-        VtnPrincipal.tmpSocio = nuevoSocio;
-        socioRegistrado ventana = new socioRegistrado();
-        ventana.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
@@ -205,6 +199,7 @@ public class VtnRegistroSocio extends javax.swing.JFrame
     private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
     {//GEN-HEADEREND:event_txtFechaKeyPressed
         Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
+        //Validaciones.enter(this, evt, btnAceptar);
     }//GEN-LAST:event_txtFechaKeyPressed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
@@ -226,6 +221,27 @@ public class VtnRegistroSocio extends javax.swing.JFrame
     {//GEN-HEADEREND:event_txtFechaKeyTyped
         Validaciones.validaFecha(evt, txtFecha.getText());
     }//GEN-LAST:event_txtFechaKeyTyped
+
+    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtFechaActionPerformed
+    {//GEN-HEADEREND:event_txtFechaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFechaActionPerformed
+
+    private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
+    {//GEN-HEADEREND:event_btnAceptarActionPerformed
+        if (txtFecha.getText().trim().isEmpty())
+        {
+            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
+            txtFecha.requestFocus();
+            return;
+        }
+        Socio nuevoSocio = new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFecha.getText());
+        VtnPrincipal.s = Manipulacion.insertaSocio(VtnPrincipal.s, nuevoSocio);
+        VtnPrincipal.tmpSocio = nuevoSocio;
+        socioRegistrado ventana = new socioRegistrado();
+        ventana.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed
     {//GEN-HEADEREND:event_btnAceptarKeyPressed
@@ -282,7 +298,7 @@ public class VtnRegistroSocio extends javax.swing.JFrame
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton BtnCancelar;
-    private javax.swing.JToggleButton btnAceptar;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtModelo;

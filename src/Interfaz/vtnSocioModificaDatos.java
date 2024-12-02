@@ -45,6 +45,8 @@ public class vtnSocioModificaDatos extends javax.swing.JFrame
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnPlaca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/placaIcono.png"))); // NOI18N
+        btnPlaca.setToolTipText("Modificar placa");
+        btnPlaca.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPlaca.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -55,6 +57,8 @@ public class vtnSocioModificaDatos extends javax.swing.JFrame
         getContentPane().add(btnPlaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         btnModelo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/MarcaIcono.png"))); // NOI18N
+        btnModelo.setToolTipText("Modificar modelo");
+        btnModelo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModelo.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
