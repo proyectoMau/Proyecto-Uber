@@ -7,6 +7,7 @@ package Interfaz;
 import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
+import java.text.SimpleDateFormat;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
 import poo.Socio;
@@ -39,9 +40,10 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         txtNombre = new javax.swing.JTextField();
         txtPlacas = new javax.swing.JTextField();
         txtModelo = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JToggleButton();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
+        txtFechaC = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -89,6 +91,13 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         getContentPane().add(txtPlacas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 230, -1));
 
         txtModelo.setEnabled(false);
+        txtModelo.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtModeloActionPerformed(evt);
+            }
+        });
         txtModelo.addKeyListener(new java.awt.event.KeyAdapter()
         {
             public void keyPressed(java.awt.event.KeyEvent evt)
@@ -101,27 +110,6 @@ public class VtnRegistroSocio extends javax.swing.JFrame
             }
         });
         getContentPane().add(txtModelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, 230, -1));
-
-        txtFecha.setEnabled(false);
-        txtFecha.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                txtFechaActionPerformed(evt);
-            }
-        });
-        txtFecha.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 230, -1));
 
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
@@ -154,7 +142,41 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         });
         getContentPane().add(BtnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
 
+        jdcFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {
+            public void propertyChange(java.beans.PropertyChangeEvent evt)
+            {
+                jdcFechaPropertyChange(evt);
+            }
+        });
+        jdcFecha.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                jdcFechaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 40, -1));
+
+        txtFechaC.setEnabled(false);
+        txtFechaC.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtFechaCActionPerformed(evt);
+            }
+        });
+        txtFechaC.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtFechaCKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtFechaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 180, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/RegistroSocios.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -176,8 +198,8 @@ public class VtnRegistroSocio extends javax.swing.JFrame
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnCancelarActionPerformed
     {//GEN-HEADEREND:event_BtnCancelarActionPerformed
-        CtrlInterfaz.limpia(txtNombre, txtPlacas, txtModelo, txtFecha);
-        CtrlInterfaz.habilita(false, txtPlacas, txtModelo, txtFecha, btnAceptar);
+        CtrlInterfaz.limpia(txtNombre, txtPlacas, txtModelo, txtFechaC);
+        CtrlInterfaz.habilita(false, txtPlacas, txtModelo, btnAceptar);
         CtrlInterfaz.selecciona(txtNombre);
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
@@ -193,14 +215,8 @@ public class VtnRegistroSocio extends javax.swing.JFrame
 
     private void txtModeloKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtModeloKeyPressed
     {//GEN-HEADEREND:event_txtModeloKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtModelo, txtFecha);
+        Validaciones.enterCadenaNoVacia(this, evt, txtModelo, btnAceptar);
     }//GEN-LAST:event_txtModeloKeyPressed
-
-    private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
-    {//GEN-HEADEREND:event_txtFechaKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
-        //Validaciones.enter(this, evt, btnAceptar);
-    }//GEN-LAST:event_txtFechaKeyPressed
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyTyped
     {//GEN-HEADEREND:event_txtNombreKeyTyped
@@ -217,25 +233,15 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         Validaciones.validaAlfanumerico(evt, 15, txtModelo.getText());
     }//GEN-LAST:event_txtModeloKeyTyped
 
-    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyTyped
-    {//GEN-HEADEREND:event_txtFechaKeyTyped
-        Validaciones.validaFecha(evt, txtFecha.getText());
-    }//GEN-LAST:event_txtFechaKeyTyped
-
-    private void txtFechaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtFechaActionPerformed
-    {//GEN-HEADEREND:event_txtFechaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFechaActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        if (txtFecha.getText().trim().isEmpty())
+        if (txtFechaC.getText().trim().isEmpty())
         {
             Mensajes.error(this, "Ingrese todos los datos para poder registrar");
-            txtFecha.requestFocus();
+            txtFechaC.requestFocus();
             return;
         }
-        Socio nuevoSocio = new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFecha.getText());
+        Socio nuevoSocio = new Socio(txtNombre.getText(), txtPlacas.getText(), txtModelo.getText(), txtFechaC.getText());
         VtnPrincipal.s = Manipulacion.insertaSocio(VtnPrincipal.s, nuevoSocio);
         VtnPrincipal.tmpSocio = nuevoSocio;
         socioRegistrado ventana = new socioRegistrado();
@@ -250,6 +256,46 @@ public class VtnRegistroSocio extends javax.swing.JFrame
             btnAceptarActionPerformed(null);
         }
     }//GEN-LAST:event_btnAceptarKeyPressed
+
+    private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_jdcFechaPropertyChange
+    {//GEN-HEADEREND:event_jdcFechaPropertyChange
+        /* if (evt.getOldValue() != null) //verifica que no tenga datos
+        {
+            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+            txtFechaC.setText(ff.format(jdcFecha.getCalendar().getTime()));
+        } else
+        {
+
+        }*/
+        if ("date".equals(evt.getPropertyName())) { // Detecta cambios en la propiedad "date"
+            if (jdcFecha.getDate() != null) { // Asegúrate de que haya una fecha seleccionada
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Define el formato de fecha
+                String formattedDate = dateFormat.format(jdcFecha.getDate()); // Formatea la fecha seleccionada
+                txtFechaC.setText(formattedDate); // Actualiza el JTextField con la fecha
+                
+            }
+        }
+    }//GEN-LAST:event_jdcFechaPropertyChange
+
+    private void jdcFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jdcFechaKeyPressed
+    {//GEN-HEADEREND:event_jdcFechaKeyPressed
+        //Validaciones.enterCadenaNoVacia(this, evt, jdcFecha, btnAceptar);
+    }//GEN-LAST:event_jdcFechaKeyPressed
+
+    private void txtFechaCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtFechaCActionPerformed
+    {//GEN-HEADEREND:event_txtFechaCActionPerformed
+        
+    }//GEN-LAST:event_txtFechaCActionPerformed
+
+    private void txtModeloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtModeloActionPerformed
+    {//GEN-HEADEREND:event_txtModeloActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeloActionPerformed
+
+    private void txtFechaCKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaCKeyPressed
+    {//GEN-HEADEREND:event_txtFechaCKeyPressed
+        Validaciones.enterCadenaNoVacia(this, evt, txtFechaC, btnAceptar);
+    }//GEN-LAST:event_txtFechaCKeyPressed
 
     /**
      * @param args the command line arguments
@@ -300,7 +346,8 @@ public class VtnRegistroSocio extends javax.swing.JFrame
     private javax.swing.JToggleButton BtnCancelar;
     private javax.swing.JButton btnAceptar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtFecha;
+    private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JTextField txtFechaC;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPlacas;
