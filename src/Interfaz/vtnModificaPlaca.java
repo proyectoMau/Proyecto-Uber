@@ -132,7 +132,7 @@ public class vtnModificaPlaca extends javax.swing.JFrame
 //        this.setVisible(false);
         VtnPrincipal.s = Manipulacion.modificaPlaca(VtnSocio.pos, VtnPrincipal.s,
                 txtNuevaPlaca.getText());
-        VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos];
+        VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos-1];
         Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n");
         ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
         ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");

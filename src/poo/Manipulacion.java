@@ -762,7 +762,7 @@ public class Manipulacion
                 {
                     for (int j = 0; j < v[i].length; j++)
                     {
-                        if ('E' == v[i][j].getStatus() || v[i][j].getStatus() == 'S')
+                        if ('E' == v[i][j].getStatus() || v[i][j].getStatus() == 'S'|| v[i][j].getStatus() == 'I')
                         {
                             if (v[i][j].getFolioCliente().equals(FolioCliente))
                             {

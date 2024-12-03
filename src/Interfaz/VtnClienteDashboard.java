@@ -4,7 +4,6 @@
  */
 package Interfaz;
 
-
 import cjb.ci.Mensajes;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
@@ -166,22 +165,26 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         {
 
             VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
-            if (VtnPrincipal.tmpVC.getStatus() == 'E')
+            if (VtnPrincipal.tmpVC != null)
             {
-                if (VtnPrincipal.v != null)
+                if (VtnPrincipal.tmpVC.getStatus() == 'E')
                 {
-                    VtnPrincipal.v = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC,
-                            Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
+                    if (VtnPrincipal.v != null)
+                    {
+                        VtnPrincipal.v = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC,
+                                Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
+                        vtnViajeCancelado vtn = new vtnViajeCancelado();
+                        vtn.setVisible(true);
+                        this.setVisible(false);
+                    }
+                } else
+                {
+                    VtnPrincipal.vC = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC, Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
                     vtnViajeCancelado vtn = new vtnViajeCancelado();
                     vtn.setVisible(true);
                     this.setVisible(false);
                 }
-            } else
-            {
-                VtnPrincipal.vC = Manipulacion.cancelarViaje(VtnPrincipal.s, VtnPrincipal.vC, Manipulacion.buscarStatusE(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC));
-                vtnViajeCancelado vtn = new vtnViajeCancelado();
-                vtn.setVisible(true);
-                this.setVisible(false);
+
             }
 
         } else
@@ -224,8 +227,8 @@ public class VtnClienteDashboard extends javax.swing.JFrame
             VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
             if (VtnPrincipal.tmpVC != null)
             {
-                pos2 = (int) (Math.random() * VtnPrincipal.s.length) ;
-                System.out.println(pos2+" socio disponible");
+                pos2 = (int) (Math.random() * VtnPrincipal.s.length);
+                System.out.println(pos2 + " socio disponible");
                 if (VtnPrincipal.tmpVC.getStatus() == 'E')
                 {
 
@@ -236,11 +239,10 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
                 if (pos2 >= 0)
                 {
-                    Mensajes.exito(this, "Reasignando");
+                    Mensajes.exito(this, "Reasignando con: " + Manipulacion.despS2(VtnPrincipal.s, pos2));
                     VtnPrincipal.tmpVC.setStatus('E');
-                    VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);//no funciona jaja
-                    System.out.println(Manipulacion.despV(VtnPrincipal.v, String.valueOf(pos2)+"Objeto en v"));
-                    
+                    VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);
+                    System.out.println(Manipulacion.despV(VtnPrincipal.v, String.valueOf(pos2) + "Objeto en v"));
 
                 } else
                 {

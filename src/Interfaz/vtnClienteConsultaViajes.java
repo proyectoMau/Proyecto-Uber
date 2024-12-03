@@ -95,14 +95,25 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         if (VtnPrincipal.v != null)
         {
-            System.out.println(VtnCliente.fC+" cliente Vtn");
-            jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s));
+            VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
+            if (VtnPrincipal.tmpVC != null)
+            {
+                if (VtnPrincipal.tmpVC.getStatus() == 'S')
+                {
+                    jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s) + VtnPrincipal.tmpVC);
+
+                } else
+                {
+                    jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s));
+                }
+
+            }
 
         } else
         {
             Mensajes.error(this, "Aun no se registran viajes viajes");
         }
-       
+
     }//GEN-LAST:event_formWindowOpened
 
     /**
