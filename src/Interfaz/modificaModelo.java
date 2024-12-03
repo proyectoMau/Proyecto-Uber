@@ -81,7 +81,7 @@ public class modificaModelo extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowOpened
         if (VtnPrincipal.tmpSocio != null)
         {
-            Socio socio = VtnPrincipal.tmpSocio;
+            Socio socio = VtnPrincipal.s[Integer.parseInt(VtnSocio.nS)-1];
             numSocio.setText(socio.getNumSocio());
             nombre.setText(socio.getNom());
             placas.setText(socio.getPlacas());

@@ -147,6 +147,8 @@ public class VtnSocioDashboard extends javax.swing.JFrame
 
     private void btnModificaDatosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnModificaDatosActionPerformed
     {//GEN-HEADEREND:event_btnModificaDatosActionPerformed
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.vC, "ViajesC.dat");
         vtnSocioModificaDatos vtn = new vtnSocioModificaDatos();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -154,6 +156,8 @@ public class VtnSocioDashboard extends javax.swing.JFrame
 
     private void btnConsultaViajesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnConsultaViajesActionPerformed
     {//GEN-HEADEREND:event_btnConsultaViajesActionPerformed
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.vC, "ViajesC.dat");
         vtnSocioConsultaViajes vtn = new vtnSocioConsultaViajes();
         vtn.setVisible(true);
         this.setVisible(false);
@@ -161,6 +165,8 @@ public class VtnSocioDashboard extends javax.swing.JFrame
 
     private void btnConsultaGananciasActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnConsultaGananciasActionPerformed
     {//GEN-HEADEREND:event_btnConsultaGananciasActionPerformed
+        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
+        ManipulaArchivos.guardaVA(VtnPrincipal.vC, "ViajesC.dat");
         vtnSocioConsultaGanancias vtn = new vtnSocioConsultaGanancias();
         vtn.setVisible(true);
         this.setVisible(false);

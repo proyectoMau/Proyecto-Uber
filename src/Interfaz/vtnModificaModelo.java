@@ -8,6 +8,7 @@ import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
 import poo.Lecturas;
+import poo.ManipulaArchivos;
 import poo.Manipulacion;
 import poo.Socio;
 
@@ -130,6 +131,8 @@ public class vtnModificaModelo extends javax.swing.JFrame
         VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos];
         Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n"
                 + Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
+        ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
+        ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");
         modificaModelo ventana = new modificaModelo();
         ventana.setVisible(true);
         this.setVisible(false);

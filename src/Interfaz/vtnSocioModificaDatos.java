@@ -4,6 +4,9 @@
  */
 package Interfaz;
 
+import poo.ManipulaArchivos;
+import poo.Socio;
+
 /**
  *
  * @author Meche}
@@ -90,6 +93,8 @@ public class vtnSocioModificaDatos extends javax.swing.JFrame
 
     private void btnModeloActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnModeloActionPerformed
     {//GEN-HEADEREND:event_btnModeloActionPerformed
+        ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
+        ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");
         vtnModificaModelo vtn = new vtnModificaModelo();
         vtn.setVisible(true);
         this.setVisible(false);
