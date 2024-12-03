@@ -129,8 +129,7 @@ public class vtnModificaModelo extends javax.swing.JFrame
         VtnPrincipal.s = Manipulacion.modificaModelo(VtnSocio.pos, VtnPrincipal.s,
                 txtNuevoModelo.getText());
         VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos];
-        Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n"
-                + Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
+        Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n");
         ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
         ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");
         modificaModelo ventana = new modificaModelo();

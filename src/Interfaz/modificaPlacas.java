@@ -4,6 +4,9 @@
  */
 package Interfaz;
 
+import cjb.ci.Mensajes;
+import poo.Socio;
+
 /**
  *
  * @author Meche}
@@ -36,9 +39,13 @@ public class modificaPlacas extends javax.swing.JFrame
         fecha = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt)
             {
                 formWindowOpened(evt);
@@ -65,12 +72,29 @@ public class modificaPlacas extends javax.swing.JFrame
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowOpened
     {//GEN-HEADEREND:event_formWindowOpened
-        // TODO add your handling code here:
+        if (VtnPrincipal.tmpSocio != null)
+        {
+            Socio socio = VtnPrincipal.s[Integer.parseInt(VtnSocio.nS)-1];
+            numSocio.setText(socio.getNumSocio());
+            nom.setText(socio.getNom());
+            placas.setText(socio.getPlacas());
+            modelo.setText(socio.getModelo());
+            fecha.setText(socio.getFecha());
+        } else
+        {
+            Mensajes.error(this, "No se encontró el socio modificado.");
+        }
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        new VtnSocioDashboard().setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

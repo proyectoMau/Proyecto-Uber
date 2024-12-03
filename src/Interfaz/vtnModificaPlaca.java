@@ -126,9 +126,18 @@ public class vtnModificaPlaca extends javax.swing.JFrame
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
-        VtnPrincipal.s = Manipulacion.modificaPlaca(VtnSocio.pos, VtnPrincipal.s, txtNuevaPlaca.getText());
-        Mensajes.exito(this, Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
-        new VtnSocioDashboard().setVisible(true);
+//        VtnPrincipal.s = Manipulacion.modificaPlaca(VtnSocio.pos, VtnPrincipal.s, txtNuevaPlaca.getText());
+//        Mensajes.exito(this, Manipulacion.despS(VtnPrincipal.s, VtnSocio.nS));
+//        new VtnSocioDashboard().setVisible(true);
+//        this.setVisible(false);
+        VtnPrincipal.s = Manipulacion.modificaPlaca(VtnSocio.pos, VtnPrincipal.s,
+                txtNuevaPlaca.getText());
+        VtnPrincipal.tmpSocio = VtnPrincipal.s[VtnSocio.pos];
+        Mensajes.exito(this, "Modelo del socio actualizado correctamente:\n");
+        ManipulaArchivos.guardaS(Socio.getCons(), "foliosS.dat");
+        ManipulaArchivos.guardaSA(VtnPrincipal.s, "Socios.dat");
+        modificaPlacas ventana = new modificaPlacas();
+        ventana.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnAceptarActionPerformed
 
