@@ -9,6 +9,7 @@ import static Interfaz.VtnClienteDashboard.monto;
 import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
+import java.text.SimpleDateFormat;
 import poo.ManipulaArchivos;
 import poo.Manipulacion;
 import static poo.Manipulacion.buscarStatus;
@@ -44,8 +45,9 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
         txtOrigen = new javax.swing.JTextField();
         txtDestino = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JToggleButton();
-        txtFecha = new javax.swing.JTextField();
         btnAceptar = new javax.swing.JButton();
+        txtFechaC = new javax.swing.JTextField();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -107,20 +109,6 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
         });
         getContentPane().add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, -1, -1));
 
-        txtFecha.setEnabled(false);
-        txtFecha.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 220, -1));
-
         btnAceptar.setBackground(new java.awt.Color(151, 247, 185));
         btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/Aceptar.png"))); // NOI18N
         btnAceptar.setToolTipText("Solicitar viaje");
@@ -141,6 +129,39 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
             }
         });
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
+
+        txtFechaC.setEnabled(false);
+        txtFechaC.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtFechaCActionPerformed(evt);
+            }
+        });
+        txtFechaC.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                txtFechaCKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtFechaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 180, -1));
+
+        jdcFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {
+            public void propertyChange(java.beans.PropertyChangeEvent evt)
+            {
+                jdcFechaPropertyChange(evt);
+            }
+        });
+        jdcFecha.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                jdcFechaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 40, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/SolicitarViaje.png"))); // NOI18N
         jLabel1.addKeyListener(new java.awt.event.KeyAdapter()
@@ -168,13 +189,8 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
 
     private void txtDestinoKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtDestinoKeyPressed
     {//GEN-HEADEREND:event_txtDestinoKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtDestino, txtFecha);
+        Validaciones.enterCadenaNoVacia(this, evt, txtDestino, txtFechaC);
     }//GEN-LAST:event_txtDestinoKeyPressed
-
-    private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
-    {//GEN-HEADEREND:event_txtFechaKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
-    }//GEN-LAST:event_txtFechaKeyPressed
 
     private void txtOrigenKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtOrigenKeyPressed
     {//GEN-HEADEREND:event_txtOrigenKeyPressed
@@ -191,20 +207,21 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
         Validaciones.validaAlfanumerico(evt, 20, txtDestino.getText());
     }//GEN-LAST:event_txtDestinoKeyTyped
 
-    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyTyped
-    {//GEN-HEADEREND:event_txtFechaKeyTyped
-        Validaciones.validaFecha(evt, txtFecha.getText());
-    }//GEN-LAST:event_txtFechaKeyTyped
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
-        CtrlInterfaz.limpia(txtOrigen, txtDestino, txtFecha);
-        CtrlInterfaz.habilita(false, txtDestino, txtFecha);
+        CtrlInterfaz.limpia(txtOrigen, txtDestino, txtFechaC);
+        CtrlInterfaz.habilita(false, txtDestino, txtFechaC);
         CtrlInterfaz.selecciona(txtOrigen);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
+        if (txtFechaC.getText().trim().isEmpty())
+        {
+            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
+            txtFechaC.requestFocus();
+            return;
+        }
         String textoStatus = "";
         if (VtnPrincipal.s == null)
         {
@@ -216,7 +233,7 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
         System.out.println(y);
         status = buscarStatus(VtnPrincipal.v, VtnPrincipal.s, y);
         VtnPrincipal.tmpVC = new Viaje(VtnCliente.fC, txtOrigen.getText(), txtDestino.getText(),
-                status, txtFecha.getText(), monto = (int) (Math.random() * 200));
+                status, txtFechaC.getText(), monto = (int) (Math.random() * 200));
 
         if (VtnPrincipal.tmpVC.getStatus() == 'S')
         {
@@ -248,6 +265,41 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
 //        ManipulaArchivos.guardaVA(VtnPrincipal.v, "Viajes.dat");
 //        ManipulaArchivos.guardaVAC(VtnPrincipal.vC, "ViajesC.dat");
     }//GEN-LAST:event_formWindowClosing
+
+    private void txtFechaCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtFechaCActionPerformed
+    {//GEN-HEADEREND:event_txtFechaCActionPerformed
+
+    }//GEN-LAST:event_txtFechaCActionPerformed
+
+    private void txtFechaCKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaCKeyPressed
+    {//GEN-HEADEREND:event_txtFechaCKeyPressed
+        Validaciones.enterCadenaNoVacia(this, evt, txtFechaC, btnAceptar);
+    }//GEN-LAST:event_txtFechaCKeyPressed
+
+    private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_jdcFechaPropertyChange
+    {//GEN-HEADEREND:event_jdcFechaPropertyChange
+        /* if (evt.getOldValue() != null) //verifica que no tenga datos
+        {
+            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+            txtFechaC.setText(ff.format(jdcFecha.getCalendar().getTime()));
+        } else
+        {
+
+        }*/
+        if ("date".equals(evt.getPropertyName())) { // Detecta cambios en la propiedad "date"
+            if (jdcFecha.getDate() != null) { // Asegúrate de que haya una fecha seleccionada
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Define el formato de fecha
+                String formattedDate = dateFormat.format(jdcFecha.getDate()); // Formatea la fecha seleccionada
+                txtFechaC.setText(formattedDate); // Actualiza el JTextField con la fecha
+
+            }
+        }
+    }//GEN-LAST:event_jdcFechaPropertyChange
+
+    private void jdcFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jdcFechaKeyPressed
+    {//GEN-HEADEREND:event_jdcFechaKeyPressed
+        //Validaciones.enterCadenaNoVacia(this, evt, jdcFecha, btnAceptar);
+    }//GEN-LAST:event_jdcFechaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -298,8 +350,9 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
     private javax.swing.JButton btnAceptar;
     private javax.swing.JToggleButton btnCancelar;
     private javax.swing.JLabel jLabel1;
+    private com.toedter.calendar.JDateChooser jdcFecha;
     private javax.swing.JTextField txtDestino;
-    private javax.swing.JTextField txtFecha;
+    private javax.swing.JTextField txtFechaC;
     private javax.swing.JTextField txtOrigen;
     // End of variables declaration//GEN-END:variables
 }

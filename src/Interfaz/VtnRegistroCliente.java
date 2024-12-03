@@ -9,6 +9,8 @@ import cjb.ci.BtnEntero;
 import cjb.ci.CtrlInterfaz;
 import cjb.ci.Mensajes;
 import cjb.ci.Validaciones;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import poo.Cliente;
 import poo.ManipulaArchivos;
@@ -28,6 +30,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
     public VtnRegistroCliente()
     {
         initComponents();
+        jdcFecha.setMinSelectableDate(new Date());
     }
 
     /**
@@ -42,10 +45,11 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         txtNombre = new javax.swing.JTextField();
-        txtFecha = new javax.swing.JTextField();
         formaPago = new javax.swing.JComboBox<>();
         btnCancelar = new javax.swing.JToggleButton();
         btnAceptar = new javax.swing.JButton();
+        jdcFecha = new com.toedter.calendar.JDateChooser();
+        txtFechaC = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -80,21 +84,6 @@ public class VtnRegistroCliente extends javax.swing.JFrame
             }
         });
         getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 260, -1));
-
-        txtFecha.setToolTipText("Fecha de registro");
-        txtFecha.setEnabled(false);
-        txtFecha.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyPressed(evt);
-            }
-            public void keyTyped(java.awt.event.KeyEvent evt)
-            {
-                txtFechaKeyTyped(evt);
-            }
-        });
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 260, -1));
 
         formaPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Selecciona-", "Tarjeta", "Efectivo" }));
         formaPago.setToolTipText("Forma de pago");
@@ -147,6 +136,32 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         });
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
 
+        jdcFecha.addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {
+            public void propertyChange(java.beans.PropertyChangeEvent evt)
+            {
+                jdcFechaPropertyChange(evt);
+            }
+        });
+        jdcFecha.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
+                jdcFechaKeyPressed(evt);
+            }
+        });
+        getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 40, -1));
+
+        txtFechaC.setEnabled(false);
+        txtFechaC.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                txtFechaCActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFechaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 210, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interfaz/imagenes/RegistroClientes.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -156,15 +171,8 @@ public class VtnRegistroCliente extends javax.swing.JFrame
 
     private void txtNombreKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtNombreKeyPressed
     {//GEN-HEADEREND:event_txtNombreKeyPressed
-        Validaciones.enterCadenaNoVacia(this, evt, txtNombre, txtFecha);
+        Validaciones.enterCadenaNoVacia(this, evt, txtNombre, btnAceptar);
     }//GEN-LAST:event_txtNombreKeyPressed
-
-    private void txtFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyPressed
-    {//GEN-HEADEREND:event_txtFechaKeyPressed
-
-        Validaciones.enterCadenaNoVacia(this, evt, txtFecha, btnAceptar);
-
-    }//GEN-LAST:event_txtFechaKeyPressed
 
     private void formaPagoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_formaPagoActionPerformed
     {//GEN-HEADEREND:event_formaPagoActionPerformed
@@ -176,15 +184,10 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         Validaciones.validaAlfabeticos(evt, 20, txtNombre.getText());
     }//GEN-LAST:event_txtNombreKeyTyped
 
-    private void txtFechaKeyTyped(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtFechaKeyTyped
-    {//GEN-HEADEREND:event_txtFechaKeyTyped
-        Validaciones.validaFecha(evt, txtFecha.getText());
-    }//GEN-LAST:event_txtFechaKeyTyped
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnCancelarActionPerformed
     {//GEN-HEADEREND:event_btnCancelarActionPerformed
-        CtrlInterfaz.limpia(txtNombre, txtFecha);
-        CtrlInterfaz.habilita(false, txtFecha, btnAceptar);
+        CtrlInterfaz.limpia(txtNombre, txtFechaC);
+        CtrlInterfaz.habilita(false, txtFechaC, btnAceptar);
         CtrlInterfaz.selecciona(txtNombre);
         formaPago.setSelectedIndex(0);
     }//GEN-LAST:event_btnCancelarActionPerformed
@@ -210,7 +213,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAceptarActionPerformed
     {//GEN-HEADEREND:event_btnAceptarActionPerformed
 
-        if (txtFecha.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty() || formaPago.getSelectedItem() == null)
+        if (txtFechaC.getText().trim().isEmpty() || txtNombre.getText().trim().isEmpty() || formaPago.getSelectedItem() == null)
         {
             Mensajes.error(this, "Ingrese todos los datos para poder registrar");
             if (txtNombre.getText().trim().isEmpty())
@@ -221,7 +224,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
                 formaPago.requestFocus();
             } else
             {
-                txtFecha.requestFocus();
+                txtFechaC.requestFocus();
             }
             return;
         }
@@ -243,72 +246,14 @@ public class VtnRegistroCliente extends javax.swing.JFrame
             Cliente nuevoCliente = new Cliente(
                     txtNombre.getText(),
                     formaPagoChar,
-                    txtFecha.getText()
+                    txtFechaC.getText()
             );
             VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c, nuevoCliente);
             VtnPrincipal.tmpCliente = nuevoCliente;
             clienteRegistrado ventana = new clienteRegistrado();
             ventana.setVisible(true);
             this.setVisible(false);
-
-            /*char formaPagoChar = 0;
-        if (txtFecha.getText().trim().isEmpty())
-
-        {
-            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
-            if (txtNombre.getText().trim().isEmpty())
-            {
-                txtNombre.requestFocus();
-            } else if (formaPago.getSelectedItem() == null)
-            {
-                formaPago.requestFocus();
-            } else
-            {
-                txtFecha.requestFocus();
-            }
-            return;
         }
-
-        if (formaPago.getSelectedItem().equals("-Selecciona-"))
-        {
-            JOptionPane.showMessageDialog(this, "Debes seleccionar un metodo de pago");
-        } else
-        {
-            if (formaPago.getSelectedItem() == "Efectivo")
-            {
-                formaPagoChar = 'E';
-            }
-            if (formaPago.getSelectedItem() == "Tarjeta")
-            {
-                formaPagoChar = 'T';
-            }
-            
-            VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c,
-                    new Cliente(txtNombre.getText(),
-                            formaPagoChar,
-                            txtFecha.getText()));
-            VtnPrincipal.c = Manipulacion.insertaCliente(VtnPrincipal.c, nuevoCliente);
-            VtnPrincipal.tmpCliente = nuevoCliente;
-            clienteRegistrado ventana = new clienteRegistrado();
-            ventana.setVisible(true);
-            this.setVisible(false);
-            
-        }*/
-//        if (txtFecha.getText().trim().isEmpty())
-//        {
-//            Mensajes.error(this, "Ingrese todos los datos para poder registrar");
-//            txtFecha.requestFocus();
-//            return;
-//        }
-//        String formaPagoSeleccionada = (String) formaPago.getSelectedItem();
-//        char formaPagoChar = formaPagoSeleccionada.charAt(0);
-//        VtnPrincipal.c=Manipulacion.insertaCliente(VtnPrincipal.c, 
-//                new Cliente(txtNombre.getText(), formaPagoChar, txtFecha.getText()));
-//        Mensajes.exito(this,"Cliente registrado correctamente \n"+Manipulacion.despC(VtnPrincipal.c, VtnPrincipal.c.length));
-//        
-//        btnCancelarActionPerformed(evt);
-        }
-
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void btnAceptarKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_btnAceptarKeyPressed
@@ -318,6 +263,35 @@ public class VtnRegistroCliente extends javax.swing.JFrame
             btnAceptarActionPerformed(null);
         }
     }//GEN-LAST:event_btnAceptarKeyPressed
+
+    private void txtFechaCActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_txtFechaCActionPerformed
+    {//GEN-HEADEREND:event_txtFechaCActionPerformed
+
+    }//GEN-LAST:event_txtFechaCActionPerformed
+
+    private void jdcFechaPropertyChange(java.beans.PropertyChangeEvent evt)//GEN-FIRST:event_jdcFechaPropertyChange
+    {//GEN-HEADEREND:event_jdcFechaPropertyChange
+        /* if (evt.getOldValue() != null) //verifica que no tenga datos 
+        {
+            SimpleDateFormat ff = new SimpleDateFormat("dd/MM/yyyy");
+            txtFechaC.setText(ff.format(jdcFecha.getCalendar().getTime()));
+        } else
+        {
+            
+        }*/
+        if ("date".equals(evt.getPropertyName())) { // Detecta cambios en la propiedad "date"
+        if (jdcFecha.getDate() != null) { // Asegúrate de que haya una fecha seleccionada
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy"); // Define el formato de fecha
+            String formattedDate = dateFormat.format(jdcFecha.getDate()); // Formatea la fecha seleccionada
+            txtFechaC.setText(formattedDate); // Actualiza el JTextField con la fecha
+        }
+    }
+    }//GEN-LAST:event_jdcFechaPropertyChange
+
+    private void jdcFechaKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jdcFechaKeyPressed
+    {//GEN-HEADEREND:event_jdcFechaKeyPressed
+        //Validaciones.enterCadenaNoVacia(this, evt, jdcFecha, btnAceptar);
+    }//GEN-LAST:event_jdcFechaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -370,7 +344,8 @@ public class VtnRegistroCliente extends javax.swing.JFrame
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> formaPago;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtFecha;
+    private com.toedter.calendar.JDateChooser jdcFecha;
+    private javax.swing.JTextField txtFechaC;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
