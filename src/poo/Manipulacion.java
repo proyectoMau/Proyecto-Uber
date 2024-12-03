@@ -4,6 +4,8 @@
  */
 package poo;
 
+import Interfaz.VtnPrincipal;
+
 /**
  *
  * @author ANGEL
@@ -358,7 +360,7 @@ public class Manipulacion
             return v;
         } else
         {
-            if (x < 0 || x > v[x].length)
+            if (x < 0 || x > v.length)
             {
                 System.out.println("Posicion incorrecta");
                 return v;
@@ -372,11 +374,10 @@ public class Manipulacion
                 {
 
                     Viaje tmp[] = new Viaje[v[x].length - 1];
-                    for (int i = 0, j = 0; i < v.length - 1; i++)
+                    for (int i = 0, j = 0; i < v[x].length - 1; i++)
                     {
-                        if (v[i][j].getFolioCliente().equals(fol))
+                        if (v[x][i].getFolioCliente().equals(fol))
                         {
-
                         } else
                         {
                             tmp[j++] = v[x][i];
@@ -587,6 +588,7 @@ public class Manipulacion
 
     public static Viaje[][] insertaViaje(Socio[] s, Viaje[][] v, Viaje obj, int x)
     {
+        System.out.println(obj+" nuevo ");
         if (s == null)
         {
             System.out.println("aun no hay socios disponibles");
@@ -596,11 +598,9 @@ public class Manipulacion
         {
             if (v == null)
             {
-                System.out.println(obj+"objeto insertado");
                 v = new Viaje[s.length][];
                 v[x] = new Viaje[1];
                 v[x][0] = obj;
-                System.out.println(x+"pos en socio");
 
             } else
             {
@@ -1017,7 +1017,7 @@ public class Manipulacion
         {
             if (v[x - 1] == null)
             {
-                s = "Sin Viajes null";
+                s = "Sin Viajes ";
             } else
             {
                 for (int j = 0; j < v[x - 1].length; j++)
@@ -1040,7 +1040,7 @@ public class Manipulacion
         return s;
     }
 
-public static String consultaGastos(Viaje[][] v, String folio)
+    public static String consultaGastos(Viaje[][] v, String folio)
     {
         String s = " ";
         double y = 0;
@@ -1069,42 +1069,15 @@ public static String consultaGastos(Viaje[][] v, String folio)
                         }
 
                     }
-                    s = "Su total de gastos es: " + y;
+
                 }
             }
-        }
-        return s;
-    }
-public static String consultaGastosI(Viaje[][] v, String folio)
-    {
-        String s = " ";
-        double y = 0;
-        int g= 0;
-        g=Integer.parseInt(folio);
-        if (v == null)
-        {
-            s = "Sin Viajes";
-        } else
-        {
-
-            for (int i = 0; i < v[g].length; i++)
+            if (y == 0)
             {
-                if (v[g] == null)
-                {
-                    s = "Sin Viajes";
-                } else
-                {
-                    
-                            if (v[i][i].getStatus() == 'T')
-                            {
-                                y = y + v[i][i].getMonto();
-                            }
-
-                        
-
-                    
-                    s = "Su total de gastos es: " + y;
-                }
+                s = "Aun no tienes gastos";
+            } else
+            {
+                s = "Su total de gastos es: " + y;
             }
         }
         return s;
@@ -1132,6 +1105,20 @@ public static String consultaGastosI(Viaje[][] v, String folio)
         if (s != null)
         {
             c += s[pos - 1].toString();
+        } else
+        {
+            c = "no hay datos";
+        }
+        return c;
+
+    }
+    public static String despS2(Socio[] s, int pos)//V[][],c[]
+    {
+        String c = "";
+        if (s != null)
+        {
+            System.out.println(pos+"socio");
+            c += s[pos].toString();
         } else
         {
             c = "no hay datos";
@@ -1289,25 +1276,31 @@ public static String consultaGastosI(Viaje[][] v, String folio)
 
     }
 
-    public static String despVTodosCS(Viaje[][] v, String pos, String SA)
+    public static String despVTodosCS(Viaje[][] v, String pos, Socio [] so)
     {
         String s = "";
+        int g=0;
         if (v != null)
         {
             for (int i = 0; i < v.length; i++)
             {
+                
                 if (v[i] != null)
                 {
                     for (int j = 0; j < v[i].length; j++)
                     {
+                        
                         if (v[i][j].getFolioCliente().equals(pos))
                         {
+                            System.out.println(g+"viaje");
 
-                            s += v[i][j].toString() + "\n" + SA + "\n";
+                            s += v[i][j].toString() + "\n";
+                            
 
                         }
 
                     }
+                    
 
                 }
 

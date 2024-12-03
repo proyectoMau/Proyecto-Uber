@@ -222,7 +222,6 @@ public class VtnClienteDashboard extends javax.swing.JFrame
         if (VtnPrincipal.vC != null)
         {
             VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
-            System.out.println(VtnPrincipal.tmpVC);
             if (VtnPrincipal.tmpVC != null)
             {
                 pos2 = (int) (Math.random() * VtnPrincipal.s.length) ;
