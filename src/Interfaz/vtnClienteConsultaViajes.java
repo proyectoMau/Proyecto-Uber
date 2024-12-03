@@ -96,7 +96,6 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
         if (VtnPrincipal.vC != null)
         {
             y = Manipulacion.buscarStatusEspera2(VtnPrincipal.vC, VtnPrincipal.s, VtnCliente.fC);
-            System.out.println(y);
             String SA=Manipulacion.despSInt(VtnPrincipal.s, y);
             jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.vC, VtnCliente.fC, SA));
 

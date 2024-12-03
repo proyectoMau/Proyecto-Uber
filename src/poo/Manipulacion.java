@@ -1012,12 +1012,12 @@ public class Manipulacion
         double y = 0;
         if (v == null || x < 0 || x > v.length)
         {
-            s = "Sin Viajes";
+            s = "Sin Viajes ";
         } else
         {
             if (v[x - 1] == null)
             {
-                s = "Sin Viajes";
+                s = "Sin Viajes null";
             } else
             {
                 for (int j = 0; j < v[x - 1].length; j++)
@@ -1026,7 +1026,6 @@ public class Manipulacion
                     {
                         y = y + v[x - 1][j].getMonto();
                     }
-
                 }
                 if (y == 0)
                 {
@@ -1041,7 +1040,7 @@ public class Manipulacion
         return s;
     }
 
-    public static String consultaGastos(Viaje[][] v, String folio)
+public static String consultaGastos(Viaje[][] v, String folio)
     {
         String s = " ";
         double y = 0;
@@ -1070,6 +1069,40 @@ public class Manipulacion
                         }
 
                     }
+                    s = "Su total de gastos es: " + y;
+                }
+            }
+        }
+        return s;
+    }
+public static String consultaGastosI(Viaje[][] v, String folio)
+    {
+        String s = " ";
+        double y = 0;
+        int g= 0;
+        g=Integer.parseInt(folio);
+        if (v == null)
+        {
+            s = "Sin Viajes";
+        } else
+        {
+
+            for (int i = 0; i < v[g].length; i++)
+            {
+                if (v[g] == null)
+                {
+                    s = "Sin Viajes";
+                } else
+                {
+                    
+                            if (v[i][i].getStatus() == 'T')
+                            {
+                                y = y + v[i][i].getMonto();
+                            }
+
+                        
+
+                    
                     s = "Su total de gastos es: " + y;
                 }
             }
