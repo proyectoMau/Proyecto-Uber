@@ -152,6 +152,7 @@ public class VtnRegistroCliente extends javax.swing.JFrame
         });
         getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 40, -1));
 
+        txtFechaC.setEditable(false);
         txtFechaC.setEnabled(false);
         txtFechaC.addActionListener(new java.awt.event.ActionListener()
         {

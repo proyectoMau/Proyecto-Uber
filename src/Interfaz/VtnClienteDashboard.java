@@ -185,6 +185,9 @@ public class VtnClienteDashboard extends javax.swing.JFrame
                     this.setVisible(false);
                 }
 
+            } else
+            {
+                Mensajes.error(this, "No hay viajes por cancelar");
             }
 
         } else
@@ -222,38 +225,61 @@ public class VtnClienteDashboard extends javax.swing.JFrame
 
     private void btnReasignarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnReasignarActionPerformed
     {//GEN-HEADEREND:event_btnReasignarActionPerformed
+        int r = 0;
         if (VtnPrincipal.vC != null)
         {
-            VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
-            if (VtnPrincipal.tmpVC != null)
+            if (VtnPrincipal.s != null)
             {
-                pos2 = (int) (Math.random() * VtnPrincipal.s.length);
-                System.out.println(pos2 + " socio disponible");
-                if (VtnPrincipal.tmpVC.getStatus() == 'E')
+                VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
+                
+                if (VtnPrincipal.tmpVC != null)
                 {
+                    pos2 = (int) (Math.random() * VtnPrincipal.s.length);
+                    System.out.println(pos2 + " socio disponible");
+                    r = Manipulacion.buscarStatusEspera3(VtnPrincipal.v, VtnPrincipal.s, pos2);
+                    System.out.println(r);
+                    switch (r)
+                    {
+                        case 1:
+                            if (VtnPrincipal.tmpVC.getStatus() == 'E')
+                            {
 
-                    y = Manipulacion.buscarStatusEspera2(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
-                    VtnPrincipal.v = Manipulacion.elimina(VtnPrincipal.v, y, VtnCliente.fC);
+                                y = Manipulacion.buscarStatusEspera2(VtnPrincipal.v, VtnPrincipal.s, VtnCliente.fC);
+                                VtnPrincipal.v = Manipulacion.elimina(VtnPrincipal.v, y, VtnCliente.fC);
 
-                }
+                            }
 
-                if (pos2 >= 0)
-                {
-                    Mensajes.exito(this, "Reasignando con: " + Manipulacion.despS2(VtnPrincipal.s, pos2));
-                    VtnPrincipal.tmpVC.setStatus('E');
-                    VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);
-                    System.out.println(Manipulacion.despV(VtnPrincipal.v, String.valueOf(pos2) + "Objeto en v"));
+                            if (pos2 >= 0)
+                            {
+                                Mensajes.exito(this, "Reasignando con: \n" + Manipulacion.despS2(VtnPrincipal.s, pos2));
+                                VtnPrincipal.tmpVC.setStatus('E');
+                                VtnPrincipal.v = Manipulacion.insertaViaje(VtnPrincipal.s, VtnPrincipal.v, VtnPrincipal.tmpVC, pos2);
+                                System.out.println(Manipulacion.despV(VtnPrincipal.v, String.valueOf(pos2 - 1) + "Objeto en v"));
+
+                            } else
+                            {
+                                Mensajes.error(this, "Aun no hay socios disponibles");
+
+                            }
+                            break;
+                        case -1:
+                            Mensajes.error(this, "no hay viajes en espera");
+                            break;
+                    }
 
                 } else
                 {
-                    Mensajes.exito(this, "Aun no hay socios disponibles");
-
+                    Mensajes.error(this, "no hay viajes en espera");
                 }
-            } else
+
+            }else 
             {
-                Mensajes.exito(this, "no hay viajes en espera");
+                Mensajes.error(this, "no hay socios "); 
             }
 
+        } else
+        {
+            Mensajes.error(this, "no hay viajes en espera");
         }
     }//GEN-LAST:event_btnReasignarActionPerformed
 

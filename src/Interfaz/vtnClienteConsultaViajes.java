@@ -101,17 +101,43 @@ public class vtnClienteConsultaViajes extends javax.swing.JFrame
                 if (VtnPrincipal.tmpVC.getStatus() == 'S')
                 {
                     jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s) + VtnPrincipal.tmpVC);
-
-                } else
+                    
+                }
+                if (VtnPrincipal.tmpVC.getStatus() == 'E')
                 {
                     jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s));
+
                 }
 
+            } else
+            {
+                jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s));
             }
 
         } else
         {
-            Mensajes.error(this, "Aun no se registran viajes viajes");
+            if (VtnPrincipal.vC != null)
+            {
+                VtnPrincipal.tmpVC = Manipulacion.copiarViaje(VtnPrincipal.vC, Integer.parseInt(VtnCliente.fC));
+                if (VtnPrincipal.tmpVC != null)
+                {
+                    if (VtnPrincipal.tmpVC.getStatus() == 'S')
+                    {
+                        jTextArea1.setText(" "+ VtnPrincipal.tmpVC);
+
+                    }
+                    if (VtnPrincipal.tmpVC.getStatus() == 'E')
+                    {
+                        jTextArea1.setText(Manipulacion.despVTodosCS(VtnPrincipal.v, VtnCliente.fC, VtnPrincipal.s));
+
+                    }
+
+                }
+            } else
+            {
+                Mensajes.error(this, "Aun no se registran viajes");
+            }
+
         }
 
     }//GEN-LAST:event_formWindowOpened

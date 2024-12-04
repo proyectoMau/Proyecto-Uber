@@ -130,6 +130,7 @@ public class VtnSolicitarViaje extends javax.swing.JFrame
         });
         getContentPane().add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 470, -1, -1));
 
+        txtFechaC.setEditable(false);
         txtFechaC.setEnabled(false);
         txtFechaC.addActionListener(new java.awt.event.ActionListener()
         {

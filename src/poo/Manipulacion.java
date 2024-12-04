@@ -331,18 +331,21 @@ public class Manipulacion
             return null;
         } else
         {
-
-            for (int i = 0; i < v[pos - 1].length; i++)
+            if (v[pos - 1] != null)
             {
-                if (v[pos - 1][i].getStatus() == 'S' || v[pos - 1][i].getStatus() == 'E')
+                for (int i = 0; i < v[pos - 1].length; i++)
                 {
-                    obj = v[pos - 1][i];
+                    if (v[pos - 1][i].getStatus() == 'S' || v[pos - 1][i].getStatus() == 'E')
+                    {
+                        obj = v[pos - 1][i];
 
-                    return obj;
+                        return obj;
 
-                } else
-                {
-                    System.out.println("No tienes viajes para cambiar");
+                    } else
+                    {
+                        System.out.println("No tienes viajes para cambiar");
+                    }
+
                 }
 
             }
@@ -565,6 +568,11 @@ public class Manipulacion
 
             } else
             {
+                if (v.length != s.length)
+                {
+                    return 'E';
+
+                }
 
                 if (v[x] == null)
                 {
@@ -588,7 +596,6 @@ public class Manipulacion
 
     public static Viaje[][] insertaViaje(Socio[] s, Viaje[][] v, Viaje obj, int x)
     {
-        System.out.println(obj+" nuevo ");
         if (s == null)
         {
             System.out.println("aun no hay socios disponibles");
@@ -762,7 +769,7 @@ public class Manipulacion
                 {
                     for (int j = 0; j < v[i].length; j++)
                     {
-                        if ('E' == v[i][j].getStatus() || v[i][j].getStatus() == 'S'|| v[i][j].getStatus() == 'I')
+                        if ('E' == v[i][j].getStatus() || v[i][j].getStatus() == 'S' || v[i][j].getStatus() == 'I')
                         {
                             if (v[i][j].getFolioCliente().equals(FolioCliente))
                             {
@@ -814,33 +821,36 @@ public class Manipulacion
         return -1;
     }
 
-    public static int buscarStatusEspera3(Viaje[][] v, Socio[] s, String FolioCliente)
+    public static int buscarStatusEspera3(Viaje[][] v, Socio[] s, int x)
     {
-        if (s == null || v == null)
+        System.out.println(x);
+        if (s == null)
         {
             return -1;
         } else
         {
-
-            for (int i = 0; i < v.length; i++)
+            if (v == null)
             {
-                if (v[i] != null)
+                return 1;
+            }
+            if (x < 0 || x > v.length)
+            {
+                return -1;
+            } else if (v[x] != null)
+            {
+                for (int j = 0; j < v[x].length; j++)
                 {
-                    for (int j = 0; j < v[i].length; j++)
+                    System.out.println(v[x][j]);
+                    if ('E' != v[x][j].getStatus())
                     {
-                        if ('E' == v[i][j].getStatus() || v[i][j].getStatus() == 'S')
-                        {
-                            if (v[i][j].getFolioCliente().equals(FolioCliente))
-                            {
-                                return j;
-                            }
-
-                        }
-
+                        return 1;
                     }
 
                 }
 
+            } else
+            {
+                return 1;
             }
 
         }
@@ -1112,12 +1122,13 @@ public class Manipulacion
         return c;
 
     }
+
     public static String despS2(Socio[] s, int pos)//V[][],c[]
     {
         String c = "";
         if (s != null)
         {
-            System.out.println(pos+"socio");
+            System.out.println(pos + "socio");
             c += s[pos].toString();
         } else
         {
@@ -1181,17 +1192,21 @@ public class Manipulacion
                 {
                     for (int j = 0; j < v[i].length; j++)
                     {
-                        if (v[i][j].getFolioCliente().equals(pos))
+                        if (v[i][j] != null)
                         {
-                            if (v[i][j].getStatus() == 'E')
+                            if (v[i][j].getFolioCliente().equals(pos))
                             {
-                                s += v[i][j].toString();
-                            } else
-                            {
-                                if (v[i][j].getStatus() == 'S')
+                                if (v[i][j].getStatus() == 'E')
                                 {
                                     s += v[i][j].toString();
+                                } else
+                                {
+                                    if (v[i][j].getStatus() == 'S')
+                                    {
+                                        s += v[i][j].toString();
+                                    }
                                 }
+
                             }
 
                         }
@@ -1276,31 +1291,30 @@ public class Manipulacion
 
     }
 
-    public static String despVTodosCS(Viaje[][] v, String pos, Socio [] so)
+    public static String despVTodosCS(Viaje[][] v, String pos, Socio[] so)
     {
+        int t = 0;
         String s = "";
-        int g=0;
         if (v != null)
         {
             for (int i = 0; i < v.length; i++)
             {
-                
                 if (v[i] != null)
                 {
                     for (int j = 0; j < v[i].length; j++)
                     {
-                        
-                        if (v[i][j].getFolioCliente().equals(pos))
+                        if (v[i][j] != null)
                         {
-                            System.out.println(g+"viaje");
+                            if (v[i][j].getFolioCliente().equals(pos))
+                            {
 
-                            s += v[i][j].toString() + "\n";
-                            
+                                s += v[i][j].toString() + "\n";
+
+                            }
 
                         }
 
                     }
-                    
 
                 }
 
@@ -1313,6 +1327,7 @@ public class Manipulacion
         return s;
 
     }
+    
 
     public static String despVTodosC2(Viaje[][] v, int pos)
     {
@@ -1409,8 +1424,10 @@ public class Manipulacion
             {
                 for (int j = 0; j < v[x - 1].length; j++)
                 {
-
-                    s += v[x - 1][j].toString() + "\n";
+                    if (v[x - 1][j] != null)
+                    {
+                        s += v[x - 1][j].toString() + "\n";
+                    }
 
                 }
 

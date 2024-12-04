@@ -158,6 +158,7 @@ public class VtnRegistroSocio extends javax.swing.JFrame
         });
         getContentPane().add(jdcFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, 40, -1));
 
+        txtFechaC.setEditable(false);
         txtFechaC.setEnabled(false);
         txtFechaC.addActionListener(new java.awt.event.ActionListener()
         {
@@ -194,6 +195,7 @@ public class VtnRegistroSocio extends javax.swing.JFrame
     private void formWindowClosed(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosed
     {//GEN-HEADEREND:event_formWindowClosed
         new VtnSocio().setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_formWindowClosed
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_BtnCancelarActionPerformed

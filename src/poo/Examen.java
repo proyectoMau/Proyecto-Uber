@@ -57,7 +57,7 @@ public class Examen
             System.out.println("Sin Viajes");
         } else
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < v.length; i++)
             {
                 System.out.println("Socio: " + s[i].getNom());
                 if (v[i] == null)
@@ -99,7 +99,7 @@ public class Examen
 
     }
 
-    public static void consultaViajesTermonados(Viaje[][] v, Socio[] s)
+    public static void consultaViajesTerminados(Viaje[][] v, Socio[] s)
     {
         int tmp = 0, vT = 0, tmp2 = 0;
         if (v == null)
@@ -107,7 +107,7 @@ public class Examen
             System.out.println("Sin Viajes");
         } else
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < v.length; i++)
             {
                 System.out.println("Socio: " + s[i].getNom());
                 if (v[i] == null)
